@@ -31,6 +31,8 @@ public class MovieController {
 	public String movie_list(Model model){
 		
 		List<MovieDTO> list = mgr.movieAllData();
+		System.out.print(list.size());
+		
 		List<String> raList = mgr.movieRank();
 		List<String> reList = mgr.movieReserve();
 		List<String> bList = mgr.movieBoxoffice();
