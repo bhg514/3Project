@@ -60,7 +60,6 @@ function ok(id)
        </td>
       </tr>
       <tr>
-      <!--  -->
         <td class="tdcenter" id="result"></td>
       </tr>
      </table>

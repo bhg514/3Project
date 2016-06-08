@@ -73,8 +73,12 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="col-md-6 col-sm-6">1</div>
-					<div class="col-md-6 col-sm-6">2</div>
+					<div class="col-md-6 col-sm-6">
+						<h3>영화별 예약 순위</h3>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<h3>뉴스</h3>
+					</div>
 				</div>
 			</div>
 		</div>
