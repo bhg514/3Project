@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sist.data.*;
 import com.sist.mapred.*;
+import com.sist.mapredEmotion.EmotionDriver;
 import com.sist.r.*;
 import com.sist.mongo.*;
 
@@ -20,10 +21,14 @@ public class MovieController {
 
 	@Autowired
 	private MovieManager		mgr;
+	/*@Autowired
+	private MovieDriver		md;*/
+	
 	@Autowired
-	private MovieDriver		md;
+	private EmotionDriver 	ed;  //감정
+	
 	@Autowired
-	private MovieRManager	mr;
+	private MovieRManager		mr;
 	@Autowired
 	private MovieDAO			dao;
 	
@@ -45,35 +50,39 @@ public class MovieController {
 	@RequestMapping("main/detail.do")
 	public String movie_detail(int no,Model model) throws Exception{
 		
-		File file = new File("/home/sist/git/final/Final/src/main/webapp/text/desc.txt");
+		File file = new File("/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
 		if(file.exists()) file.delete();
+				
+		MovieDTO vo = mgr.movieDetail(no); 	/* 1.영화상세정보 */
 		
-		/*file = new File("/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/desc.txt");
-		file.createNewFile();*/
-		
-		MovieDTO vo = mgr.movieDetail(no);
-		
-		//댓글수집
-		for(int i=1;i<=3;i++){
+		for(int i=1;i<=3;i++){				/* 2.댓글수집 60개 */
 			String json = mgr.review_data(vo.getTitle(), i);
 			mgr.jsonParse(json);
 		}
-		//MapReduce(Hadoop) => part-r-00000
-		md.movieMapReduce();
-		//Rserve => Graph
-		mr.rGraph();
-		//Rserve 데이타 받기
-		List<FeelVO> flist = mr.rFeelData();
-		//필요한 데이터를 MongoDB에 저장(추천)
-		for(FeelVO r:flist){
-			MovieVO mv = new MovieVO();
-			mv.setTitle(vo.getTitle());
-			mv.setFeel(r.getFeel());
-			mv.setCount(r.getCount());
-			dao.recommandInsert(mv);
+												/* 3.하둡 */
+		ed.jobCall();
+		
+	   String[] movieFeel=new String[6];
+	   movieFeel=mr.feel();		//  감정 6
+
+	   int[] feelCount=new int[6];
+	   feelCount=mr.count();
+	      		
+		//필요한 데이터를 MongoDB에 3개이상 저장(추천)
+		for(int i=0; i<feelCount.length; i++){
+			if(feelCount[i]>=3){
+				MovieVO mv = new MovieVO();
+				mv.setTitle(vo.getTitle());
+				mv.setFeel(movieFeel[i]);
+				mv.setCount(feelCount[i]);
+				dao.recommandInsert(mv);
+			}
 		}
 		
 		model.addAttribute("vo",vo);
+		model.addAttribute("movieFeel",movieFeel);
+		model.addAttribute("feelCount",feelCount);
+		
 		return "pages/detail";
 	}
 	
@@ -93,9 +102,7 @@ public class MovieController {
 		
 		List<MovieVO> mflist = dao.recommandMovieFeelData(feel);
 		
-		
-		
-		
+	
 		model.addAttribute("feel",feel);
 		model.addAttribute("flist",flist);
 		model.addAttribute("list",list);

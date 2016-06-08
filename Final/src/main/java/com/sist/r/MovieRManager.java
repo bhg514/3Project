@@ -21,35 +21,46 @@ public class MovieRManager {
 			
 		}catch(Exception ex){System.out.println(ex.getMessage());}
 	}
-	
-	// 데이터 받기 => 몽고
-	public List<FeelVO> rFeelData(){
-		List<FeelVO> list = new ArrayList<FeelVO>();
-		try{
-			RConnection rc = new RConnection();
-			rc.voidEval("data<-read.table(\"/home/sist/git/final/Final/src/main/webapp/output/part-r-00000\")");
-			
-			REXP p = rc.eval("data$V1");		// R에서 데이터 받을 때
-			String[] feel = p.asStrings();
-			
-			p = rc.eval("data$V2");
-			int[] count = p.asIntegers();
-			
-			rc.close();
-			
-			for(int i=0; i<count.length; i++){
-				if(count[i]>=3){
-					FeelVO vo = new FeelVO();
-					vo.setFeel(feel[i]);
-					vo.setCount(count[i]);
-					list.add(vo);
-				}
-			}
-			
-		}catch(Exception ex){System.out.println(ex.getMessage());}
-		
-		return list;
-	}
-	
+
+	 
+	 public String[] feel() {
+	      String[] feel =new String[6];
+	      try{
+	         RConnection rc = new RConnection();
+	         
+	         rc.voidEval("data<-read.table(\"/home/sist/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000\")");
+	         rc.voidEval("data<-data[order(data$V2,decreasing=T),c(\"V1\",\"V2\")]");
+
+	         REXP p = rc.eval("data$V1");
+	         feel= p.asStrings();
+
+	         
+	         
+	      }catch(Exception ex){
+	         System.out.println(ex.getMessage());
+	      }
+	      return feel;
+
+	   }
+	 
+	   public int[] count() {
+		   
+	      int[] count=new int[6];
+	      try{
+	         RConnection rc = new RConnection();
+	         
+	         rc.voidEval("data<-read.table(\"/home/sist/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000\")");
+	         rc.voidEval("data<-data[order(data$V2,decreasing=T),c(\"V1\",\"V2\")]");
+
+	         REXP p = rc.eval("data$V2");
+	         count = p.asIntegers();
+	         
+	         	System.out.println(count);
+	      }catch(Exception ex){
+	         System.out.println(ex.getMessage());
+	      }
+	      return count;
+
+	   }
 	
 }
