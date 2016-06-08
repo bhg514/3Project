@@ -2,9 +2,13 @@ package com.sist.mongo;
 
 import java.util.*;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.*;
+import com.sist.member.MemberDTO;
+import com.sist.member.ZipcodeDTO;
+
 import java.net.*;
 
 @Repository
@@ -24,7 +28,7 @@ public class MovieDAO {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
+    
 	// 저장
 	public void recommandInsert(MovieVO vo){
 		try{

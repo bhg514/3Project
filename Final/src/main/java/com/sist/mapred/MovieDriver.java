@@ -28,9 +28,9 @@ public class MovieDriver {
 			job.setOutputKeyClass(Text.class);
 			job.setOutputValueClass(IntWritable.class);
 			
-			FileInputFormat.addInputPath(job, new Path("/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/desc.txt"));
+			FileInputFormat.addInputPath(job, new Path("/home/sist/git/final/Final/src/main/webapp/text/desc.txt"));
 			
-			File dir= new File("/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/output");
+			File dir= new File("/home/sist/git/final/Final/src/main/webapp/output");
 			if(dir.exists()){
 				File[] files = dir.listFiles();
 				for(File f:files){
@@ -39,7 +39,7 @@ public class MovieDriver {
 				dir.delete();
 			} // rm -rf
 			
-			FileOutputFormat.setOutputPath(job, new Path("/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/output"));
+			FileOutputFormat.setOutputPath(job, new Path("/home/sist/git/final/Final/src/main/webapp/output"));
 			job.waitForCompletion(true);
 			
 		}catch(Exception ex){System.out.println(ex.getMessage());}
