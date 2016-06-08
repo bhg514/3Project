@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="table.css">
+<link rel="stylesheet" type="text/css" href="../table.css">
 </head>
 <body>
   <center>
@@ -50,13 +50,13 @@
                                  
                             
          --%>
-         <img src="image/btn_reply.gif"></a>
+         <img src="../image/btn_reply.gif"></a>
          <a href="board_update.do?no=${dto.no }&page=${page}">
-         <img src="image/btn_modify.gif"></a>
+         <img src="../image/btn_modify.gif"></a>
          <a href="board_delete.do?no=${dto.no }&page=${page}">
-         <img src="image/btn_delete.gif"></a>
+         <img src="../image/btn_delete.gif"></a>
          <a href="board_list.do?page=${page }">
-         <img src="image/btn_list.gif" border=0></a>
+         <img src="../image/btn_list.gif" border=0></a>
        </td>
       </tr>
     </table>

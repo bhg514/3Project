@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="table.css">
+<link rel="stylesheet" type="text/css" href="../table.css">
 </head>
 <body>
   <center>
@@ -35,7 +35,7 @@
               <c:forEach var="i" begin="1" end="${dto.group_tab }">
                 &nbsp;&nbsp;
               </c:forEach>
-              <img src="image/icon_reply.gif">
+              <img src="../image/icon_reply.gif">
             </c:if>
             <c:if test="${msg == dto.subject }">
              <font color=blue>${dto.subject }</font>
@@ -44,7 +44,7 @@
              <a href="board_content.do?no=${dto.no }&page=${curpage}">${dto.subject }</a>
             </c:if>
             <c:if test="${today==dto.regdate }">
-              <img src="image/icon_new (2).gif">
+              <img src="../image/icon_new (2).gif">
             </c:if>
           </td>
           <td width=15% class="tdcenter">${dto.name }</td>
