@@ -69,7 +69,6 @@ public class MovieController {
 
 	   int[] feelCount=new int[6];
 	   feelCount=mr.count();
-	      		
 		//필요한 데이터를 MongoDB에 3개이상 저장(추천)
 		for(int i=0; i<feelCount.length; i++){
 			if(feelCount[i]>=3){

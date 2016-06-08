@@ -38,8 +38,8 @@ public class MovieManager {
 		
 		MovieManager m = new MovieManager();
 		//m.movieAllData();
-		///home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieProject/movie_main.jsp
-		File file = new File("/home/sist/git/final/Final/src/main/webapp/text/desc.txt");
+		///home/actif/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieProject/movie_main.jsp
+		File file = new File("/home/actif/git/final/Final/src/main/webapp/text/desc.txt");
 		if(file.exists()) file.delete();
 		
 		
@@ -295,7 +295,7 @@ public class MovieManager {
 			}
 			
 			// true는 append
-			FileWriter fw = new FileWriter("/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt",true);
+			FileWriter fw = new FileWriter("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt",true);
 			fw.write(desc);
 			fw.close();
 			

@@ -47,7 +47,7 @@ public class WhoDriver {
 			   FileSystem fs1=FileSystem.get(conf);
 			   // hadoop fs -cat /
 			   fs1.copyFromLocalFile(
-					   new Path("/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt"), //영화상세정보
+					   new Path("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt"), //영화상세정보
 					   new Path("/input/who/who.txt"));	
 			   fs1.close();
 			   
@@ -62,7 +62,7 @@ public class WhoDriver {
 			   FileSystem fs=FileSystem.get(conf);
 			   fs.copyToLocalFile(
 					   new Path("/output/who/part-r-00000"),
-					   new Path("/home/sist/git/3Project/Final/src/main/webapp/text/output/who/part-r-00000")); //영화감정분석
+					   new Path("/home/actif/git/3Project/Final/src/main/webapp/text/output/who/part-r-00000")); //영화감정분석
 			   fs.close();			   
 				
 		   }catch(Exception ex)
