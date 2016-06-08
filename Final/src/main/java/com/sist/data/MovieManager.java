@@ -187,8 +187,8 @@ public class MovieManager {
 		try{
 			
 			Document doc = Jsoup.connect("http://movie.naver.com/movie/sdb/rank/rreserve.nhn").get();
-			Elements elems = doc.select("td.title div.tit4");
-			
+			Elements elems = doc.select("td.title div.tit4 a");
+
 			for(int i=0; i<10; i++){
 				Element elem = elems.get(i);
 				list.add(elem.text());

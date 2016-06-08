@@ -14,10 +14,9 @@ import com.sist.data.*;
 import com.sist.mapred.*;
 import com.sist.r.*;
 import com.sist.mongo.*;
-
+import com.sist.search.*;
 @Controller
 public class MovieController {
-
 	@Autowired
 	private MovieManager		mgr;
 	@Autowired
@@ -28,13 +27,20 @@ public class MovieController {
 	private MovieDAO			dao;
 	
 	@RequestMapping("main/main.do")
-	public String movie_list(Model model){
+	public String movie_list(String title, Model model){
 		
 		List<MovieDTO> list = mgr.movieAllData();
 		List<String> raList = mgr.movieRank();
 		List<String> reList = mgr.movieReserve();
 		List<String> bList = mgr.movieBoxoffice();
 		
+		// 뉴스 읽기
+		if(title==null){
+		title="영화";
+		}
+		System.out.println(title+"컨트롤러");
+		List<Item> newslist=NewsDAO.newsAllData(title);
+		model.addAttribute("newslist", newslist);
 		model.addAttribute("raList",raList);
 		model.addAttribute("reList",reList);
 		model.addAttribute("bList",bList);
