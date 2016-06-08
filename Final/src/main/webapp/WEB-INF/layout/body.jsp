@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../table.css">
+<link rel="stylesheet" type="text/css" href="../table.css">	<!-- webapp/table.css 참조 -->
 <!-- Bootstrap Core CSS -->
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom CSS -->
@@ -77,7 +77,7 @@
 					<div class="col-md-6 col-sm-6">
 						<center>
 						<h3>실시간 예매 순위</h3>
-						<table id="table_content" width="320px">
+						<table id="table_content" width="320px">	<!-- webapp/table.css 참조 -->
 						<c:forEach var="vo" items="${reList }" varStatus="status">
 							<tr height="30px">
 								<td style="text-align: left; width:15%">${status.count}위</td>
@@ -89,7 +89,7 @@
 					</div>
 					<div class="col-md-6 col-sm-6">
 						<h3>실시간 영화 소식</h3>
-						<table id="table_content" width="400px">
+						<table id="table_content" width="400px">		<!-- webapp/table.css 참조 -->
 							<tr>
 								<form method="post" action="main.do" accept-charset="UTF-8">
 									<th style="height:40px;text-align: center; vertical-align: middle;">

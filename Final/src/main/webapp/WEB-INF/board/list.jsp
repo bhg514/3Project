@@ -10,7 +10,16 @@
 <link rel="stylesheet" type="text/css" href="../table.css">
 </head>
 <body>
-  <center>
+	<div class="col-md-3">
+	<h3>장르별 커뮤니티</h3>
+	<ul>
+		<li><a href="#">커뮤니티</a></li>
+		<li><a href="#">Q&A</a></li>
+	</ul>
+	</div>
+  
+  	<div class="col-md-9">
+    <center>
     <h3>게시판</h3>
     <table id="table_content">
       <tr>
@@ -62,7 +71,9 @@
       </td>
      </tr>
     </table>
-  </center>
+    </center>
+    </div>
+
 </body>
 </html>
 
