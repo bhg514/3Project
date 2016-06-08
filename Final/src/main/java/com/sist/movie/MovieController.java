@@ -39,7 +39,7 @@ public class MovieController {
 		model.addAttribute("reList",reList);
 		model.addAttribute("bList",bList);
 		model.addAttribute("list",list);
-		return "main/main";
+		return "main";
 	}
 	
 	@RequestMapping("main/detail.do")
@@ -74,7 +74,7 @@ public class MovieController {
 		}
 		
 		model.addAttribute("vo",vo);
-		return "main/detail";
+		return "pages/detail";
 	}
 	
 	@RequestMapping("main/recommand.do")
@@ -100,7 +100,7 @@ public class MovieController {
 		model.addAttribute("flist",flist);
 		model.addAttribute("list",list);
 		model.addAttribute("mflist",mflist);
-		return "main/recommand";
+		return "pages/recommand";
 	}
 	
 	@RequestMapping("main/total.do")
@@ -149,7 +149,7 @@ public class MovieController {
 		
 		model.addAttribute("data",data);
 		model.addAttribute("list",list);
-		return "main/total";
+		return "pages/total";
 	}
 	
 	
