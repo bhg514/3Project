@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="table.css">
 <link rel="stylesheet" type="text/css" href="user/shadow/css/shadowbox.css">
@@ -19,7 +19,7 @@ function idcheck()
 		player:'iframe',
 		width:240,
 		height:150,
-		title:'¾ÆÀÌµğ Áßº¹Ã¼Å©'
+		title:'ì•„ì´ë”” ì¤‘ë³µì²´í¬'
 	});
 }
 function postfind()
@@ -29,14 +29,14 @@ function postfind()
 		player:'iframe',
 		width:490,
 		height:350,
-		title:'¿ìÆí¹øÈ£ Ã£±â'
+		title:'ìš°í¸ë²ˆí˜¸ ì°¾ê¸°'
 	});
 }
 </script>
 </head>
 <body>
   <center>
-    <h3>È¸¿ø °¡ÀÔ</h3>
+    <h3>íšŒì› ê°€ì…</h3>
     <form name="join_frm" action="join_ok.do" method="post">
     
          <table id="table_content">
@@ -44,38 +44,38 @@ function postfind()
              <td width=15% align=right>ID</td>
              <td width=85% align=left>
               <input type=text name=id size=12 readonly>
-              <input type="button" value="Áßº¹Ã¼Å©" onclick="idcheck()">
+              <input type="button" value="ì¤‘ë³µì²´í¬" onclick="idcheck()">
              </td>
            </tr>
            <tr height=30>
              <td width=15% align=right>Password</td>
              <td width=85% align=left>
               <input type=password name=pwd size=12 required>
-              &nbsp;ÀçÀÔ·Â
+              &nbsp;ì¬ì…ë ¥
               <input type=password name=pwd1 size=12 required>
              </td>
            </tr>
            <tr height=30>
-             <td width=15% align=right>ÀÌ¸§</td>
+             <td width=15% align=right>ì´ë¦„</td>
              <td width=85% align=left>
               <input type=text name=name size=12 required>
              </td>
            </tr>
            <tr height=30>
-             <td width=15% align=right>¼ºº°</td>
+             <td width=15% align=right>ì„±ë³„</td>
              <td width=85% align=left>
-              <input type=radio name=sex value=³²ÀÚ checked>³²ÀÚ
-              <input type=radio name=sex value=¿©ÀÚ>¿©ÀÚ
+              <input type=radio name=sex value=ë‚¨ì checked>ë‚¨ì
+              <input type=radio name=sex value=ì—¬ì>ì—¬ì
              </td>
            </tr>
            <tr height=30>
-             <td width=15% align=right>»ı³â¿ùÀÏ</td>
+             <td width=15% align=right>ìƒë…„ì›”ì¼</td>
              <td width=85% align=left>
               <input type=date name=birth size=20>
              </td>
            </tr>
            <tr height=30>
-             <td width=15% align=right>ÀüÈ­¹øÈ£</td>
+             <td width=15% align=right>ì „í™”ë²ˆí˜¸</td>
              <td width=85% align=left>
               <select name=tel1>
                 <option>010</option>
@@ -87,29 +87,29 @@ function postfind()
              </td>
            </tr>
            <tr height=30>
-             <td width=15% align=right>¿ìÆí¹øÈ£</td>
+             <td width=15% align=right>ìš°í¸ë²ˆí˜¸</td>
              <td width=85% align=left>
               <input type=text name=post1 readonly size=5>-
               <input type=text name=post2 readonly size=5>
-              <input type="button" value="¿ìÆí¹øÈ£°Ë»ö" onclick="postfind()">
+              <input type="button" value="ìš°í¸ë²ˆí˜¸ê²€ìƒ‰" onclick="postfind()">
              </td>
            </tr>
            <tr height=30>
-             <td width=15% align=right>ÁÖ¼Ò</td>
+             <td width=15% align=right>ì£¼ì†Œ</td>
              <td width=85% align=left>
               <input type=text name=addr1 size=45 readonly>
              </td>
            </tr>
            <tr height=30>
-             <td width=15% align=right>»ó¼¼ÁÖ¼Ò</td>
+             <td width=15% align=right>ìƒì„¸ì£¼ì†Œ</td>
              <td width=85% align=left>
               <input type=text name=addr2 size=45>
              </td>
            </tr>
            <tr>
              <td colspan="2" align=center>
-              <input type="submit" value="°¡ÀÔ">
-              <input type="button" value="Ãë¼Ò">
+              <input type="submit" value="ê°€ì…">
+              <input type="button" value="ì·¨ì†Œ">
              </td>
            </tr>
          </table>

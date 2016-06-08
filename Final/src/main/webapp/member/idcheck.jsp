@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="table.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
@@ -31,14 +31,14 @@ function idcheckCallback()
 			$('#result').text("");
 			if(count==0)
 			{
-				var res=$('#id').val()+"´Â(Àº) »ç¿ë°¡´ÉÇÑ IDÀÔ´Ï´Ù<br>"
-				       +"<input type=button value=È®ÀÎ onclick=ok('"+$('#id').val()+"')>";
+				var res=$('#id').val()+"ëŠ”(ì€) ì‚¬ìš©ê°€ëŠ¥í•œ IDì…ë‹ˆë‹¤<br>"
+				       +"<input type=button value=í™•ì¸ onclick=ok('"+$('#id').val()+"')>";
 				$('#result').append(res);
 			}
 			else
 			{
-				var res="<font color=yellow>"+$('#id').val()+"´Â(Àº) "
-				       +"ÀÌ¹Ì »ç¿ëÁßÀÎ IDÀÔ´Ï´Ù";
+				var res="<font color=yellow>"+$('#id').val()+"ëŠ”(ì€) "
+				       +"ì´ë¯¸ ì‚¬ìš©ì¤‘ì¸ IDì…ë‹ˆë‹¤";
 				$('#result').append(res);
 			}
 		}
@@ -56,7 +56,7 @@ function ok(id)
      <table id="table_content" width=220 style="margin-top: 10px">
       <tr>
        <td><font color=white>ID:</font><input type=text name=id size=12 id="id">
-       <input type=button value="Ã¼Å©" id="checkBtn">
+       <input type=button value="ì²´í¬" id="checkBtn">
        </td>
       </tr>
       <tr>

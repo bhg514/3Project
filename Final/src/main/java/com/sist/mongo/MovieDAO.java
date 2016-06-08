@@ -17,7 +17,7 @@ public class MovieDAO {
 	private MongoClient		mc;
 	private DB					db;
 	private DBCollection		dbc;
-	private DBCollection 	dbm;
+	
 	public MovieDAO(){
 		try{	
 			mc = new MongoClient(new ServerAddress("211.238.142.89",27017));

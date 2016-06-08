@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="table.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
@@ -45,8 +45,8 @@ function post(zip,addr)
   <center>
     <table id="table_content" style="margin-top: 20px;width:450px">
       <tr>
-        <td>입력:<input type=text name=dong id="dong" size=15>
-            <input type=button value=찾기 id="postBtn">
+        <td>�엯�젰:<input type=text name=dong id="dong" size=15>
+            <input type=button value=李얘린 id="postBtn">
         </td>
       </tr>
       <tr>

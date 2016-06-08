@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -12,13 +12,13 @@
     <table id="table_content" style="width: 450px">
       <c:if test="${count==0 }">
        <tr>
-         <td class="tdcenter">八祸等 搬苞蔼捞 绝嚼聪促</td>
+         <td class="tdcenter">瓴�靸夒悳 瓴瓣臣臧掛澊 鞐嗢姷雼堧嫟</td>
        </tr>
       </c:if>
       <c:if test="${count!=0 }">
        <tr>
-         <th width=30%>快祈锅龋</th>
-         <th width=70%>林家</th>
+         <th width=30%>鞖绊幐氩堩樃</th>
+         <th width=70%>欤检唽</th>
        </tr>
        <c:forEach var="vo" items="${list }">
         <tr>
