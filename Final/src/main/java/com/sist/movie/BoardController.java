@@ -13,8 +13,10 @@ import javax.annotation.Resource;
 
 @Controller
 public class BoardController {
-     @Resource(name="boardDAO")
+     
+	 @Resource(name="boardDAO")
      private BoardDAO dao;
+     
      @RequestMapping("board/board_list.do")
      public String board_list(String page,Model model)
      {
@@ -30,11 +32,13 @@ public class BoardController {
     	 model.addAttribute("msg", "관리자가 삭제한 게시물입니다.");
     	 return "board/list";
      }
+     
      @RequestMapping("board/board_insert.do")
      public String board_insert()
      {
     	 return "board/insert";
      }
+     
      @RequestMapping("board/board_insert_ok.do")
      public String board_insert_ok(BoardVO vo)
      {

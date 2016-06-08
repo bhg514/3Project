@@ -20,9 +20,9 @@ public class MovieDAO {
 	
 	public MovieDAO(){
 		try{	
-			mc = new MongoClient(new ServerAddress("211.238.142.89",27017));
+			mc = new MongoClient(new ServerAddress("211.238.142.77",27017));
 			db = mc.getDB("mydb");
-			dbc = db.getCollection("recommand");
+			dbc = db.getCollection("test");
 			
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -36,6 +36,7 @@ public class MovieDAO {
 			DBCursor cursor = dbc.find();
 			while(cursor.hasNext()){
 				BasicDBObject obj = (BasicDBObject)cursor.next();
+	
 				int no = obj.getInt("no");
 				if(max<no) max=no;
 			}
@@ -46,9 +47,13 @@ public class MovieDAO {
 			int i = 0;
 			while(cursor.hasNext()){
 				BasicDBObject obj = (BasicDBObject)cursor.next();
+				
 				String title = obj.getString("title");
+				
 				String feeling = obj.getString("feel");
+				
 				i = obj.getInt("no");
+				
 				if(title.equals(vo.getTitle()) && feeling.equals(vo.getFeel())){
 					bCheck = true;
 					break;
@@ -62,6 +67,7 @@ public class MovieDAO {
 				BasicDBObject obj = (BasicDBObject)dbc.findOne(where);
 				
 				BasicDBObject up = new BasicDBObject();
+				
 				up.put("no", obj.getInt("no"));
 				up.put("title", obj.getString("title"));
 				up.put("feel", vo.getFeel());
@@ -79,7 +85,7 @@ public class MovieDAO {
 			
 			
 		}catch(Exception ex){
-			System.out.println(ex.getMessage());
+			System.out.println("recommandInsert: "+ex.getMessage());
 		}
 	}
 	

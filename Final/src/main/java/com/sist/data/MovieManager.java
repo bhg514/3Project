@@ -295,7 +295,7 @@ public class MovieManager {
 			}
 			
 			// true는 append
-			FileWriter fw = new FileWriter("/home/sist/git/final/Final/src/main/webapp/text/desc.txt",true);
+			FileWriter fw = new FileWriter("/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt",true);
 			fw.write(desc);
 			fw.close();
 			
