@@ -39,7 +39,7 @@ public class MovieController {
 		model.addAttribute("reList",reList);
 		model.addAttribute("bList",bList);
 		model.addAttribute("list",list);
-		return "main/main";
+		return "main";
 	}
 	
 	@RequestMapping("main/detail.do")
@@ -74,7 +74,7 @@ public class MovieController {
 		}
 		
 		model.addAttribute("vo",vo);
-		return "main/detail";
+		return "pages/detail";
 	}
 	
 	@RequestMapping("main/recommand.do")
@@ -85,6 +85,7 @@ public class MovieController {
 		List<String> flist = dao.recommandFeelData();
 		List<String> mlist = dao.recommandTitleData(feel);
 		List<MovieDTO> list = new ArrayList<MovieDTO>();
+
 		for(String title:mlist){
 			MovieDTO d = mgr.movieDetail(title);
 			list.add(d);
@@ -92,11 +93,14 @@ public class MovieController {
 		
 		List<MovieVO> mflist = dao.recommandMovieFeelData(feel);
 		
+		
+		
+		
 		model.addAttribute("feel",feel);
 		model.addAttribute("flist",flist);
 		model.addAttribute("list",list);
 		model.addAttribute("mflist",mflist);
-		return "main/recommand";
+		return "pages/recommand";
 	}
 	
 	@RequestMapping("main/total.do")
@@ -145,7 +149,7 @@ public class MovieController {
 		
 		model.addAttribute("data",data);
 		model.addAttribute("list",list);
-		return "main/total";
+		return "pages/total";
 	}
 	
 	

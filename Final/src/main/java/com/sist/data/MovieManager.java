@@ -56,7 +56,8 @@ public class MovieManager {
 		
 		try{
 			
-			Document doc = Jsoup.connect("http://www.cgv.co.kr/movies/").get();
+			Document doc = Jsoup.connect("http://www.cgv.co.kr/movies/").get();			
+			
 			//System.out.println(doc);
 			Elements titleElem = doc.select("div.box-contents strong.title");
 			Elements imageElem = doc.select("div.box-image a span.thumb-image img");
@@ -66,7 +67,8 @@ public class MovieManager {
 			Elements dayElem = doc.select("div.box-contents span.txt-info strong");
 			Elements rankElem = doc.select("div.box-image strong.rank");
 			Elements gradeElem = doc.select("div.box-image a span.thumb-image span");
-			String[] color = {"#b87333","silver","gold","#e5e4e2","#ccffcc","#ccccff","#EDEDED"};
+			String[] color = {"#b87333","silver","gold","#e5e4e2","#ccffcc","#ccccff","#EDEDED"};			
+			
 			for(int i=0; i<percentElem.size(); i++){
 				Element telem = titleElem.get(i);
 				Element pelem = percentElem.get(i);
@@ -124,6 +126,37 @@ public class MovieManager {
 		return d;
 	} // movieDetail(int no)
 
+	public List<MovieNavDTO> navermovielist(){
+		
+		List<MovieNavDTO> list = new ArrayList<MovieNavDTO>();
+		
+		try{
+			
+			Document navdoc = Jsoup.connect("http://movie.naver.com/movie/running/current.nhn?order=reserve").get();
+			
+			Elements navTitleAndImg = navdoc.select("div.lst_wrap ul.lst_detail_t1 li div.thumb img");
+			//Elements navThemes = navdoc.select("div.lst_wrap ul.lst_detail_t1 li span.link_txt a");
+	
+			for(int i=0; i<navTitleAndImg.size(); i++){
+				Element navti = navTitleAndImg.get(i);
+				
+				String titleOfnaver = navti.attr("alt");
+				String imgOfnaver = navti.attr("src");
+				
+				MovieNavDTO nmd = new MovieNavDTO();
+				nmd.setPoster(imgOfnaver);
+				nmd.setTitle(titleOfnaver);
+				list.add(nmd);
+			}
+			
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+		
+		return list;
+		
+	}
+	
 	
 	public List<String> movieRank(){
 		
