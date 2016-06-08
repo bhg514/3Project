@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="table.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript" src="../../ajax.js"></script>
+<script type="text/javascript" src="../ajax.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#checkBtn').click(function(){
