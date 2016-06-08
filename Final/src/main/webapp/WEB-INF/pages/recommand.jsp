@@ -56,6 +56,16 @@ $(function(){
 				</select>
 				</form>
 			</td>
+			<td>
+				시간
+				:<select>
+				<option>--시간--</option>
+				<option>오전</option>
+				<option>오후</option>
+				<option>조조</option>
+				<option>심야</option>
+				</select>
+			</td>
 		</tr>
 	</table>
 	<table id="table_content" style="width:600px;">
@@ -88,6 +98,29 @@ $(function(){
 				<div id="piechart" style="width: 600px; height: 500px;"></div>
 			</td>
 		</tr>
+	</table>
+	<table id="table_content" width=900 border=1>
+		<c:forEach var="vo" items="${movielist }">
+		<tr>
+			<td rowspan=6><img src="${vo.poster }" width=100%></td>
+		</tr>
+		<tr>
+			<td>${vo.title }</td>
+		</tr>
+		<tr>
+			<td>${vo.genre }</td>
+		</tr>
+		<tr>
+			<td>${vo.reserve }%</td>
+		</tr>
+		<tr>
+			<td>${vo.star }점</td>
+		</tr>
+		<tr>
+			<td>상영시간 : ${vo.movietime }</td>
+		</tr>
+		</c:forEach>
+		
 	</table>
 </center>
 </body>

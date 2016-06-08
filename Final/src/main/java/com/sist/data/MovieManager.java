@@ -69,6 +69,7 @@ public class MovieManager {
 			Elements gradeElem = doc.select("div.box-image a span.thumb-image span");
 			String[] color = {"#b87333","silver","gold","#e5e4e2","#ccffcc","#ccccff","#EDEDED"};			
 			
+			
 			for(int i=0; i<percentElem.size(); i++){
 				Element telem = titleElem.get(i);
 				Element pelem = percentElem.get(i);
@@ -129,25 +130,46 @@ public class MovieManager {
 	public List<MovieNavDTO> navermovielist(){
 		
 		List<MovieNavDTO> list = new ArrayList<MovieNavDTO>();
-		
+		int rank = 1;
 		try{
 			
 			Document navdoc = Jsoup.connect("http://movie.naver.com/movie/running/current.nhn?order=reserve").get();
 			
-			Elements navTitleAndImg = navdoc.select("div.lst_wrap ul.lst_detail_t1 li div.thumb img");
-			//Elements navThemes = navdoc.select("div.lst_wrap ul.lst_detail_t1 li span.link_txt a");
-	
-			for(int i=0; i<navTitleAndImg.size(); i++){
-				Element navti = navTitleAndImg.get(i);
+			Elements titleAndImg = navdoc.select("div.lst_wrap ul.lst_detail_t1 li div.thumb img");
+			Elements genreAndManAndMem = navdoc.select("div.lst_wrap ul.lst_detail_t1 dl.info_txt1");
+			Elements starAndReserve = navdoc.select("div.lst_wrap ul.lst_detail_t1 li dd.star span.num");
+			
+			for(int i=0; i<titleAndImg.size(); i++){
 				
-				String titleOfnaver = navti.attr("alt");
-				String imgOfnaver = navti.attr("src");
+				Element navti = titleAndImg.get(i);
+				Element star = starAndReserve.get(i*2);
+				Element reserve = starAndReserve.get(i*2+1);
+				Element genres = genreAndManAndMem.get(i);				
 				
-				MovieNavDTO nmd = new MovieNavDTO();
-				nmd.setPoster(imgOfnaver);
-				nmd.setTitle(titleOfnaver);
-				list.add(nmd);
+				MovieNavDTO d = new MovieNavDTO();
+				StringTokenizer st = new StringTokenizer(genres.text(), "|");
+				if(st.hasMoreTokens()){
+					String genre = st.nextToken();
+					genre = genre.substring(3);
+					d.setGenre(genre);
+					
+					String time = st.nextToken();
+					time = time.substring(0,time.lastIndexOf('분'));
+					time = time.trim();
+					d.setMovietime(Integer.parseInt(time));
+				}
+				String title = navti.attr("alt");
+				String image = navti.attr("src");
+				
+				d.setNo(rank++);
+				d.setPoster(image);
+				d.setTitle(title);
+				d.setStar(Double.parseDouble(star.text()));
+				d.setReserve(Double.parseDouble(reserve.text()));
+				list.add(d);
+				
 			}
+			
 			
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
