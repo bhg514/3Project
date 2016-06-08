@@ -1,82 +1,67 @@
-@CHARSET "UTF-8";
-@import url(http://fonts.googleapis.com/css?family=Anaheim);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
 
-*{
-  margin: 0;
-  padding: 0;
-  outline: none;
-  border: none;
+body {
+  font-family: 'PT Sans', Arial, Verdana;
+  background-color: #eee;
+}
+
+h1 {
+  text-align: center;
+  font-size: 48px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #222;
+}
+
+img {
+  display: inline-block;
+  width: 190px;
+  height: 290px;
+}
+
+
+.carousel {
+  width: 1400px;
+  height: 440px;
+  overflow: hidden;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 2px solid #999;
+  box-shadow: 0 0 4px #000;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top:130px;
+}
+.main1 {
+	margin-left:400px;
 	box-sizing: border-box;
+  border: 2px solid #999;
+  box-shadow: 0 0 4px #000;
+  margin: 0 auto;
+  border-radius: 5px;
 }
-*:before,
-*:after{
+.main2{
 	box-sizing: border-box;
+  border: 2px solid #999;
+  box-shadow: 0 0 4px #000;
+  margin: 0 auto;
+  border-radius: 5px;
 }
-html,
-body{
-	min-height: 100%;
-}
-body{
-	background-image: radial-gradient(mintcream 0%, lightgray 100%);
-}
-h1{
-	display: table;
-	margin: 5% auto 0;
-	text-transform: uppercase;
-	font-family: 'NanumGothic';
-	font-size: 4em;
-	font-weight: 400;
-	text-shadow: 0 1px white, 0 2px black;
-}
-h3{
-	font-family: 'NanumGothic';
-}
-#carousel{
-	width: 100%;
-	height: 30%;
-	position: absolute;
-	transform-style: preserve-3d;
-	animation: rotation 20s infinite linear;
-	margin-top: -90px;
-}
-#carousel:hover{
-	animation-play-state: paused;
-}
-#carousel figure{
-	display: block;
-	position: absolute;
-	width: auto;	
-	height: 500px;
-	left: 10px;
-	top: 10px;
-	background: black;
-	overflow: hidden;
-	border: solid 2px black;
-}
-#carousel figure:nth-child(1) { transform: rotateY(0deg) translateZ(550px);}
-#carousel figure:nth-child(2) { transform: rotateY(50deg) translateZ(550px);}
-#carousel figure:nth-child(3) { transform: rotateY(100deg) translateZ(550px);}
-#carousel figure:nth-child(4) { transform: rotateY(150deg) translateZ(550px);}
-#carousel figure:nth-child(5) { transform: rotateY(200deg) translateZ(550px);}
-#carousel figure:nth-child(6) { transform: rotateY(250deg) translateZ(550px);}
-#carousel figure:nth-child(7) { transform: rotateY(300deg) translateZ(550px);}
-
-img{
-	cursor: pointer;
-	transition: all .5s ease;
-	width: 386px;
-	height: 300px;
-}
-img:hover{
-	-webkit-filter: grayscale(0);
-  transform: scale(1.2,1.2);
+.carousel h2{
+	margin-top:15px;
 }
 
-@keyframes rotation{
-	from{
-		transform: rotateY(0deg);
-	}
-	to{
-		transform: rotateY(360deg);
-	}
+.holder {
+  animation: carousel 2s linear infinite;
+  white-space: nowrap;
+  will-change: transform;
+  margin-top:20px;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.holder img:hover{
+  -webkit-filter: grayscale(0);
+  transform: scale(1.4,1.4);
 }
