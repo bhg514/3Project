@@ -3,6 +3,8 @@ package com.sist.movie;
 import java.io.File;
 import java.util.*;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,8 +27,6 @@ public class MovieController {
 	@Autowired
 	private MovieDAO			dao;
 	
-	
-	
 	@RequestMapping("main/list.do")
 	public String movie_list(Model model){
 		
@@ -45,7 +45,7 @@ public class MovieController {
 	@RequestMapping("main/detail.do")
 	public String movie_detail(int no,Model model) throws Exception{
 		
-		File file = new File("/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/desc.txt");
+		File file = new File("/home/sist/git/final/Final/src/main/webapp/text/desc.txt");
 		if(file.exists()) file.delete();
 		
 		/*file = new File("/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/desc.txt");

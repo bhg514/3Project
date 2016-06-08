@@ -27,6 +27,9 @@ $(function(){
 	<table id="table_content" style="width:900px;">
 		<tr>
 			<td align=right>
+				<a href="../board/board_list.do">커뮤니티</a>
+			</td>
+			<td align=right>
 				<a href="total.do">영화시각화</a>
 			</td>
 		</tr>

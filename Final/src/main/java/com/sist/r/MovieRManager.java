@@ -11,8 +11,8 @@ public class MovieRManager {
 	public void rGraph(){
 		try{
 			RConnection rc = new RConnection();
-			rc.voidEval("data<-read.table(\"/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/output/part-r-00000\")");
-			rc.voidEval("png(\"/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/main/feel.png\",width=900,height=500)");
+			rc.voidEval("data<-read.table(\"/home/sist/git/final/Final/src/main/webapp/output/part-r-00000\")");
+			rc.voidEval("png(\"/home/sist/git/final/Final/src/main/webapp/text/feel.png\",width=900,height=500)");
 			rc.voidEval("par(mfrow=c(1,2))"); // 그래프 여러개 합칠때 1,2는 1줄에 두개
 			rc.voidEval("pie(data$V2,labels=data$V1,col=rainbow(10))");
 			rc.voidEval("barplot(data$V2,names.arg=data$V1,col=rainbow(10))");
@@ -27,7 +27,7 @@ public class MovieRManager {
 		List<FeelVO> list = new ArrayList<FeelVO>();
 		try{
 			RConnection rc = new RConnection();
-			rc.voidEval("data<-read.table(\"/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/output/part-r-00000\")");
+			rc.voidEval("data<-read.table(\"/home/sist/git/final/Final/src/main/webapp/output/part-r-00000\")");
 			
 			REXP p = rc.eval("data$V1");		// R에서 데이터 받을 때
 			String[] feel = p.asStrings();
