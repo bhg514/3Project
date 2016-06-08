@@ -27,7 +27,7 @@ public class MovieController {
 	@Autowired
 	private MovieDAO			dao;
 	
-	@RequestMapping("main/list.do")
+	@RequestMapping("main/main.do")
 	public String movie_list(Model model){
 		
 		List<MovieDTO> list = mgr.movieAllData();
@@ -39,7 +39,7 @@ public class MovieController {
 		model.addAttribute("reList",reList);
 		model.addAttribute("bList",bList);
 		model.addAttribute("list",list);
-		return "main/list";
+		return "main/main";
 	}
 	
 	@RequestMapping("main/detail.do")
