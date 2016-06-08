@@ -39,7 +39,7 @@ public class MovieManager {
 		MovieManager m = new MovieManager();
 		//m.movieAllData();
 		///home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieProject/movie_main.jsp
-		File file = new File("/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/desc.txt");
+		File file = new File("/home/sist/git/final/Final/src/main/webapp/text/desc.txt");
 		if(file.exists()) file.delete();
 		
 		
@@ -262,7 +262,7 @@ public class MovieManager {
 			}
 			
 			// true는 append
-			FileWriter fw = new FileWriter("/home/sist/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieMapReduceProject/desc.txt",true);
+			FileWriter fw = new FileWriter("/home/sist/git/final/Final/src/main/webapp/text/desc.txt",true);
 			fw.write(desc);
 			fw.close();
 			
