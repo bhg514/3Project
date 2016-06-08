@@ -48,7 +48,7 @@
 </table>
 <table id="table_content" style="width:900px">
 	<tr>
-		<td><img src="feel.png"></td>
+		<td><img src="../text/feel.png"></td>
 	</tr>
 </table>
 </center>
