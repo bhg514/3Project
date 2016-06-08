@@ -96,7 +96,7 @@ public class MovieController {
 		model.addAttribute("flist",flist);
 		model.addAttribute("list",list);
 		model.addAttribute("mflist",mflist);
-		return "main/recommand";
+		return "main/recommand/recommand";
 	}
 	
 	@RequestMapping("main/total.do")
