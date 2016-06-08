@@ -2,9 +2,13 @@ package com.sist.mongo;
 
 import java.util.*;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.*;
+import com.sist.member.MemberDTO;
+import com.sist.member.ZipcodeDTO;
+
 import java.net.*;
 
 @Repository
@@ -13,7 +17,7 @@ public class MovieDAO {
 	private MongoClient		mc;
 	private DB					db;
 	private DBCollection		dbc;
-	
+	private DBCollection 	dbm;
 	public MovieDAO(){
 		try{	
 			mc = new MongoClient(new ServerAddress("211.238.142.89",27017));
@@ -24,7 +28,7 @@ public class MovieDAO {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
+    
 	// 저장
 	public void recommandInsert(MovieVO vo){
 		try{
