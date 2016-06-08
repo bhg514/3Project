@@ -3,6 +3,8 @@ package com.sist.movie;
 import java.io.File;
 import java.util.*;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +27,7 @@ public class MovieController {
 	@Autowired
 	private MovieDAO			dao;
 	
-	
-	
-	@RequestMapping("main/list.do")
+	@RequestMapping("main/main.do")
 	public String movie_list(Model model){
 		
 		List<MovieDTO> list = mgr.movieAllData();
@@ -39,7 +39,7 @@ public class MovieController {
 		model.addAttribute("reList",reList);
 		model.addAttribute("bList",bList);
 		model.addAttribute("list",list);
-		return "main/list";
+		return "main/main";
 	}
 	
 	@RequestMapping("main/detail.do")

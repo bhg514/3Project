@@ -6,7 +6,6 @@
 	border-bottom-style: solid;
 	border-top-color: #333;
 	border-bottom-color: #333;
-	
 }
 #table_content th,td{
 	margin: 0px;
@@ -23,6 +22,7 @@
 	border-bottom-width: 1px;
 	border-bottom-color: #666;
 	border-bottom-style: dotted;
+	color:black;
 }
 #table_content #dataTr:HOVER {
 	background-color: #FC6;
@@ -37,7 +37,6 @@
 }
 #table_content a{
 	text-decoration: none;
-	color:black;
 }
 #table_content a:HOVER{
 	text-decoration: underline;
