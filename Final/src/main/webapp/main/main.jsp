@@ -40,7 +40,7 @@
 					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a class="page-scroll" href="recommand.do">추천</a></li>
-					<li><a class="page-scroll" href="community.do">커뮤니티</a></li>
+					<li><a class="page-scroll" href="../board/board_list.do">커뮤니티</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -75,6 +75,9 @@
 				<div class="col-md-12">
 					<div class="col-md-6 col-sm-6">
 						<h3>영화별 예약 순위</h3>
+						<div>
+							
+						</div>
 					</div>
 					<div class="col-md-6 col-sm-6">
 						<h3>뉴스</h3>
