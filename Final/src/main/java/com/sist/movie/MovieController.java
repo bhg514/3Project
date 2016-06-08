@@ -85,12 +85,16 @@ public class MovieController {
 		List<String> flist = dao.recommandFeelData();
 		List<String> mlist = dao.recommandTitleData(feel);
 		List<MovieDTO> list = new ArrayList<MovieDTO>();
+
 		for(String title:mlist){
 			MovieDTO d = mgr.movieDetail(title);
 			list.add(d);
 		}
 		
 		List<MovieVO> mflist = dao.recommandMovieFeelData(feel);
+		
+		
+		
 		
 		model.addAttribute("feel",feel);
 		model.addAttribute("flist",flist);
