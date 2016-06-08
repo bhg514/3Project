@@ -39,7 +39,7 @@ public class MovieController {
 		model.addAttribute("reList",reList);
 		model.addAttribute("bList",bList);
 		model.addAttribute("list",list);
-		return "main/list";
+		return "main/main";
 	}
 	
 	@RequestMapping("main/detail.do")
