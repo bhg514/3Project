@@ -31,14 +31,23 @@ public class MovieController {
 	public String movie_list(Model model){
 		
 		List<MovieDTO> list = mgr.movieAllData();
-		List<String> raList = mgr.movieRank();
-		List<String> reList = mgr.movieReserve();
-		List<String> bList = mgr.movieBoxoffice();
 		
-		model.addAttribute("raList",raList);
-		model.addAttribute("reList",reList);
-		model.addAttribute("bList",bList);
+		List<MovieNavDTO> nlist = mgr.navermovielist();
+		
+		List<MovieNavDTO> nList = new ArrayList<MovieNavDTO>();
+		for(int i=0; i<9; i++){
+			MovieNavDTO d = new MovieNavDTO();
+			d.setNo(nlist.get(i).getNo());
+			d.setPoster(nlist.get(i).getPoster());
+			d.setTitle(nlist.get(i).getTitle());
+			nList.add(d);
+		}
+		
+		
+		
+		
 		model.addAttribute("list",list);
+		model.addAttribute("nList",nList);
 		return "main";
 	}
 	
@@ -93,9 +102,10 @@ public class MovieController {
 		
 		List<MovieVO> mflist = dao.recommandMovieFeelData(feel);
 		
+		List<MovieNavDTO> movielist = mgr.navermovielist();
 		
 		
-		
+		model.addAttribute("movielist",movielist);
 		model.addAttribute("feel",feel);
 		model.addAttribute("flist",flist);
 		model.addAttribute("list",list);

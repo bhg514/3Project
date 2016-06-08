@@ -56,10 +56,10 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div id="carousel">
-						<c:forEach var="vo" items="${list }">
+						<c:forEach var="vo" items="${nList }" varStatus="1">
 							<figure>
 								<a href="detail.do?no=${vo.no}" class="aImg" value="${vo.no }">
-									<img src="${vo.image }" width=100 height=150 border=0 id="m${vo.no }">
+									<img src="${vo.poster }" width=100 height=150 border=0 id="m${vo.no }">
 									<br><br>
 									<h2 style="color:white">${vo.no }위</h2>
 									<br><br>
