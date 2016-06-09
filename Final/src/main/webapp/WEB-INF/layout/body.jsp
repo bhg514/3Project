@@ -50,87 +50,58 @@
 						</div>
 					</div>
 				</div>
-				<br>
-				<br>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="col-md-5 col-sm-5">
-							<div class="main1">asdfjsadfjsadlkfjasldf</div>
-						</div>
-						<div class="col-md-5 col-sm-5">
-							<div class="main2">asdkjasldjsakldjlkasd</div>
-						</div>
-					</div>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-				</div>
+				<br> <br>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="col-md-6 col-sm-6">
-							<center>
-								<h3>실시간 예매 순위</h3>
-								<table id="table_content" width="320px">
-									<c:forEach var="vo" items="${reList }" varStatus="status">
-										<tr height="30px">
-											<td style="text-align: left; width: 15%">${status.count}위</td>
-											<td style="text-align: left; width: 85%">&nbsp;${vo }
-											<td>
+							<div class="main2">
+								<center>
+									<h3>실시간 예매 순위</h3>
+									<table id="table_content" width="320px">
+										<c:forEach var="vo" items="${reList }" varStatus="status">
+											<tr height="30px">
+												<td style="text-align: left; width: 15%">${status.count}위</td>
+												<td style="text-align: left; width: 85%">&nbsp;${vo }
+												<td>
+											</tr>
+										</c:forEach>
+									</table>
+								</center>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="main3">
+								<h3>실시간 영화 소식</h3>
+								<table id="table_content" width="400px">
+									<tr>
+										<form method="post" action="main.do" accept-charset="UTF-8">
+											<th
+												style="height: 40px; text-align: center; vertical-align: middle;">
+												<input type="text"
+												style="width: 40%; color: #000; display: inline;"
+												name="title" value="${search }"> <input
+												type="submit" value="검색"
+												style="background: #fff; color: #ccc; width: 8%">
+											</th>
+										</form>
+									</tr>
+									<c:forEach var="vo" begin="0" end="10" items="${newslist }">
+										<tr style="text-align: left;">
+											<td height="30px">
+												<div
+													style="width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; cursor: pointer;"
+													class="newsClass">
+													<a href="#" style="color: #fff;">${vo.title }</a><br>
+												</div>
+												<div style="color: gray; display: none;">
+													&nbsp;&nbsp;&nbsp; <a href="${vo.link }"
+														style="color: gray;"> ${vo.description } </a>
+												</div>
+											</td>
 										</tr>
 									</c:forEach>
 								</table>
-							</center>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<h3>실시간 영화 소식</h3>
-							<table id="table_content" width="400px">
-								<tr>
-									<form method="post" action="main.do" accept-charset="UTF-8">
-										<th
-											style="height: 40px; text-align: center; vertical-align: middle;">
-											<input type="text"
-											style="width: 40%; color: #000; display: inline;"
-											name="title" value="${search }"> <input type="submit"
-											value="검색" style="background: #fff; color: #ccc; width: 8%">
-										</th>
-									</form>
-								</tr>
-								<c:forEach var="vo" begin="0" end="10" items="${newslist }">
-									<tr style="text-align: left;">
-										<td height="30px">
-											<div
-												style="width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; cursor: pointer;"
-												class="newsClass">
-												<a href="#" style="color: #fff;">${vo.title }</a><br>
-											</div>
-											<div style="color: gray; display: none;">
-												&nbsp;&nbsp;&nbsp; <a href="${vo.link }"
-													style="color: gray;"> ${vo.description } </a>
-											</div>
-										</td>
-									</tr>
-								</c:forEach>
-							</table>
+							</div>
 						</div>
 					</div>
 				</div>

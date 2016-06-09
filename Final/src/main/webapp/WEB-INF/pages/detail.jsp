@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+<script src="http://s.codepen.io/assets/libs/modernizr.js"
+	type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="../assets/css/table.css">
-<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch'
+	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
 <link rel="stylesheet" href="../assets/css/feel.css">
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.8/TweenMax.min.js'></script>
+<script
+	src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script
+	src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.8/TweenMax.min.js'></script>
 
 
 <script>
@@ -19,49 +23,85 @@
 </script>
 </head>
 <body>
-<center>
-<h3>${vo.title } 상세정보</h3>
-<table id="table_content" style="width:800px">
-   <tr>
-      <td align=right>
-         <a href="list.do">목록</a>&nbsp;
-         <a href="recommand.do">추천</a>
-      </td>
-   </tr>
-</table>
-<table id="table_content" style="width:800px">
-   <tr>
-      <td width=40% class="tdcenter" rowspan="6">
-         <img src="${vo.image }" width=320 height=400>
-      </td>
-      <th colspan="2">${vo.title }</th>
-   </tr>
-   <tr>
-      <td width=20% align=right>개봉일</td>
-      <td width=40% align=left>${vo.regdate }</td>
-   </tr>
-   <tr>
-      <td width=20% align=right>예매율</td>
-      <td width=40% align=left>${vo.reserve }%</td>
-   </tr>
-   <tr>
-      <td width=20% align=right>선호도</td>
-      <td width=40% align=left>${vo.like }</td>
-   </tr>
-   <tr>
-      <td width=20% align=right>별점</td>
-      <td width=40% align=left>${vo.star }</td>
-   </tr>
-   <tr>
-      <td width=20% align=right>등급</td>
-      <td width=40% align=left>${vo.grade }</td>
-   </tr>
-</table>
-<table>
-   <tr>
-      <td><canvas id='graph'></canvas></td>
+	<center>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="col-md-12 col-sm-12">
 
-        <script>
+			<div class="col-md-1 col-sm-1"></div>
+			<div class="col-md-10">
+				<h3>${vo.title }상세정보</h3>
+			</div>
+			<div class="col-md-1 col-sm-1"></div>
+
+
+			<div class="col-md-1 col-sm-1"></div>
+			<div class="col-md-5">
+				<img src="${vo.image }" width=320 height=400>
+			</div>
+
+			<div class="col-md-5">
+				<table class="table">
+					<tbody>
+						<tr>
+							<td>제목</td>
+							<td>${vo.title }</td>
+						</tr>
+
+						<tr>
+							<td>개봉일</td>
+							<td>${vo.regdate }</td>
+						</tr>
+
+						<tr>
+							<td>예매율</td>
+							<td>${vo.reserve }%</td>
+						</tr>
+
+						<tr>
+							<td>선호도</td>
+							<td>${vo.like }</td>
+						</tr>
+
+						<tr>
+							<td>별점</td>
+							<td>${vo.star }</td>
+						</tr>
+
+						<tr>
+							<td>등급</td>
+							<td>${vo.grade }</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="col-md-1 col-sm-1"></div>
+		</div>
+		<br>
+		<br>
+
+		<div class="col-md-1 col-sm-1"></div>
+		<div class="col-md-10">
+			<canvas id='graph'></canvas>
+		</div>
+		<br>
+		<br>
+		<div class="col-md-1 col-sm-1"></div>
+		<div class="col-md-5">누구랑</div>
+		<div class="col-md-5">언제</div>
+		<div class="col-md-1 col-sm-1"></div>
+
+
+		<script>
      // CUSTOMISABLE
         var sides  = 6;
         var canvasSize = 500;
@@ -245,8 +285,6 @@
 
         play();
         </script>
-   </tr>
-</table>
-</center>
+	</center>
 </body>
 </html>
