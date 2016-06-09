@@ -9,9 +9,15 @@ public class MovieNavDTO {
 	private double		reserve;
 	private double		star;
 	private int			movietime;
+	private int count;				//count!boyoung
 	
 	
-	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public int getMovietime() {
 		return movietime;
 	}
