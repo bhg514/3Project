@@ -34,6 +34,9 @@ public class MovieController {
 	@RequestMapping("main/main.do")
 	public String movie_list(String title, Model model){
 		List<MovieDTO> list = mgr.movieAllData();
+		for(int i=0;i<list.size();i++){
+			list.get(i).getImage();
+		}
 		List<String> raList = mgr.movieRank();
 		List<String> reList = mgr.movieReserve();
 		List<String> bList = mgr.movieBoxoffice();
