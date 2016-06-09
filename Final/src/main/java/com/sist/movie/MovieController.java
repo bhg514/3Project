@@ -133,7 +133,7 @@ public class MovieController {
 		{
 			if(j>5)
 				break;
-			fc+="'"+((s*100)/top)+"',";  
+			fc+="'"+((s*100)/(top+0.1))+"',";  
 			j++;
 		}
 		fc=fc.substring(0,fc.lastIndexOf(","));
