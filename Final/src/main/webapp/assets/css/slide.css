@@ -24,21 +24,25 @@ img {
   width: 1400px;
   height: 440px;
   overflow: hidden;
-  padding: 8px;
+  padding: 20px;
   box-sizing: border-box;
-  border: 2px solid #999;
-  box-shadow: 0 0 4px #000;
+  border-top: 5px solid #FDF1E0;
+  border-bottom: 5px solid #FFE9AE;
+  box-shadow: 0 0 30px #FFE9AE;
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-top:130px;
+  margin-bottom: 30px;
 }
 .main1 {
+	margin-top:50px;
 	margin-left:400px;
 	box-sizing: border-box;
   border: 2px solid #999;
   box-shadow: 0 0 4px #000;
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: 10px;
+  z-index: -1;
 }
 .main2{
 	box-sizing: border-box;

@@ -9,14 +9,14 @@
 <body>
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" style="background:black; opacity: 0.9;height:70px;">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-main-collapse">
 					<i class="fa fa-bars"></i>
 				</button>
-				<a class="navbar-brand page-scroll" href="#page-top"> <i
+				<a class="navbar-brand page-scroll" href="main.do"> <i
 					class="fa fa-play-circle"></i> <span class="light">Start</span>
 					Movie Finder
 				</a>
@@ -29,7 +29,7 @@
 					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a class="page-scroll" href="recommand.do">추천</a></li>
-					<li><a class="page-scroll" href="community.do">커뮤니티</a></li>
+					<li><a class="page-scroll" href="../board/board_list.do">커뮤니티</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

@@ -44,68 +44,90 @@
 									</a>
 									<%-- <br>
 									<h2 style="color: white">${vo.title }</h2> --%>
-
 								</c:forEach>
 							</div>
 						</div>
 					</div>
 				</div>
-				<br> <br>
+				<br>
+				<br>
 				<div class="row">
+					<center>
 					<div class="col-md-12">
-						<div class="col-md-6 col-sm-6">
-							<div class="main2">
-								<center>
-									<h3>실시간 예매 순위</h3>
-									<table id="table_content" width="320px">
-										<c:forEach var="vo" items="${reList }" varStatus="status">
-											<tr height="30px">
-												<td style="text-align: left; width: 15%">${status.count}위</td>
-												<td style="text-align: left; width: 85%">&nbsp;${vo }
-												<td>
-											</tr>
-										</c:forEach>
-									</table>
-								</center>
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<div class="main3">
-								<h3>실시간 영화 소식</h3>
-								<table id="table_content" width="400px">
-									<tr>
-										<form method="post" action="main.do" accept-charset="UTF-8">
-											<th
-												style="height: 40px; text-align: center; vertical-align: middle;">
-												<input type="text"
-												style="width: 40%; color: #000; display: inline;"
-												name="title" value="${search }"> <input
-												type="submit" value="검색"
-												style="background: #fff; color: #ccc; width: 8%">
-											</th>
-										</form>
-									</tr>
-									<c:forEach var="vo" begin="0" end="10" items="${newslist }">
-										<tr style="text-align: left;">
-											<td height="30px">
-												<div
-													style="width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; cursor: pointer;"
-													class="newsClass">
-													<a href="#" style="color: #fff;">${vo.title }</a><br>
-												</div>
-												<div style="color: gray; display: none;">
-													&nbsp;&nbsp;&nbsp; <a href="${vo.link }"
-														style="color: gray;"> ${vo.description } </a>
-												</div>
-											</td>
+						<div class="col-md-1 col-sm-1"></div>
+						<div class="col-md-5 col-sm-5">
+							<div class="main1" style="padding-top:50px; padding-bottom:50px;margin-bottom: 50px;">
+							<center>
+								<h2>실시간 예매 순위</h2>
+								<table id="table_content" width="500px">
+									<c:forEach var="vo" items="${reList }" varStatus="status">
+										<tr height="43px">
+											<td style="text-align: left; width: 15%; font-size: 20px;">${status.count}위</td>
+											<td style="text-align: left; width: 85%; font-size: 20px;">&nbsp;${vo }
+											<td>
 										</tr>
 									</c:forEach>
 								</table>
+							</center>
+							</div>
+						</div>
+						<div class="col-md-5 col-sm-5">
+							<div class="main2" style="padding-top:50px; padding-bottom:50px;">
+							<h2>실시간 영화 소식</h2>
+							<table id="table_content" width="400px">
+								<tr>
+									<form method="post" action="main.do" accept-charset="UTF-8">
+										<th style="height: 40px; text-align: center; vertical-align: middle;">
+											<input type="text"
+											style="width: 40%; color: #000; display: inline;font-size: 18px"
+											name="title" value="${search }">&nbsp;&nbsp; <input type="submit"
+											value="검색" style="background: #fff; color: #856366; width: 10%; font-size: 18px; border-radius:5px;">
+										</th>
+									</form>
+								</tr>
+								<c:forEach var="vo" begin="0" end="10" items="${newslist }">
+									<tr style="text-align: left;">
+										<td height="35px">
+											<div
+												style="width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; cursor: pointer;font-size: 20px;"
+												class="newsClass">
+												<a href="#" style="color: #fff;">${vo.title }</a><br>
+											</div>
+											<div style="color: gray; display: none;">
+												&nbsp;&nbsp;&nbsp; <a href="${vo.link }"
+													style="color: gray;"> ${vo.description } </a>
+											</div>
+										</td>
+									</tr>
+								</c:forEach>
+							</table>
 							</div>
 						</div>
 					</div>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
 				</div>
-			</div>
 	</header>
 
 

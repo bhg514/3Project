@@ -7,11 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../table.css">
+<link rel="stylesheet" type="text/css" href="../table_pink.css">
 </head>
 <body>
   <center>
-    <h3>게시판</h3>
+    <h2 style="">영화커뮤니티</h2>
+    <p style="">자유롭게 영화에 대해서 정보를 공유해보세요!</p>
     <table id="table_content">
       <tr>
        <td align=left>
