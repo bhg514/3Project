@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -200,9 +201,11 @@
 				<form action="#" method="get">
 					<div class="input-group">
 						<!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+
 						<input class="form-control" id="system-search" name="q"
-							placeholder="Search for" required> <span
+							placeholder="장르별로 검색해 보세요 : 액션/모험/판타지/드라마" required> <span
 							class="input-group-btn">
+
 							<button type="submit" class="btn btn-default">
 								<i class="glyphicon glyphicon-search"></i>
 							</button>
@@ -215,15 +218,16 @@
 				<table class="table table-list-search">
 					<thead>
 						<tr>
-							<th>No.</th>
+							<th>순위</th>
 							<th>제목</th>
 							<th>장르</th>
-							<th>예약순위</th>
+							<th>예매율</th>
 							<th>평점</th>
 							<th>상영시간</th>
 							<th>포스터</th>
 						</tr>
 					</thead>
+
 					<tbody>
 						<c:forEach var="vo" items="${movielist }">
 							<tr>
@@ -232,8 +236,8 @@
 								<td>${vo.genre }</td>
 								<td>${vo.reserve }%</td>
 								<td>${vo.star }점</td>
-								<td>상영시간 : ${vo.movietime }</td>
-								<td><img src="${vo.poster }"></td>
+								<td>${vo.movietime }분</td>
+								<td><%-- <img src="${vo.poster }"> --%>포스터보기</td>
 							</tr>
 						</c:forEach>
 					</tbody>
