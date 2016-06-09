@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -104,7 +105,7 @@ public class MovieController {
 	   movieWho=mr.who();
 	   whoCount=mr.who_count();
 	   
-	   for(int i=0; i<feelCount.length; i++){
+	  /* for(int i=0; i<feelCount.length; i++){
 			if(feelCount[i]>=3){
 				MovieVO mv = new MovieVO();
 				mv.setTitle(vo.getTitle());
@@ -112,7 +113,7 @@ public class MovieController {
 				mv.setCount(feelCount[i]);
 				dao.recommandInsert(mv);
 			}
-		}
+		}*/  												 /* 몽고디비 돌리지 않기 */
 		int top=feelCount[0];
 		int j=0;
 		String mf="[";
@@ -168,7 +169,7 @@ public class MovieController {
 		    }else{
 		    	who4Count[2]+=whoCount[i];
 		    }
-		   
+	   
 	   }
 	 
 		String whoText="";
@@ -181,11 +182,6 @@ public class MovieController {
 		whoText=whoText.substring(0,whoText.lastIndexOf(","));
 
 		int bestValue=(bestCount/(bestCount+wortCount))*100;
-	
-	   
-	   //"친구","애인","썸녀","썸남","가족","오빠","자기","여친","남친","엄마","아빠","여자친구","남자친구"
-		//필요한 데이터를 MongoDB에 3개이상 저장(추천)
-		
 
 		
 		// 조조 야간 오전 오후 심야
@@ -224,69 +220,54 @@ public class MovieController {
 		return "pages/detail";
 	}
 	
-	@RequestMapping("main/recommand.do")
-	public String movie_recommand(String feel,Model model){
-		
-		if(feel==null) feel="재미";
-		
-		List<String> flist = dao.recommandFeelData();
-		List<String> mlist = dao.recommandTitleData(feel);
-		List<MovieNavDTO> list = new ArrayList<MovieNavDTO>();
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("main/recommand.do")											/* 추천페이지 _ 84개 데이터 */
+	public String movie_recommand(Model model){
 
-		for(String title:mlist){
-			MovieNavDTO d = mgr.movieDetail(title);
-			list.add(d);
-		}
-		
-		List<MovieVO> mflist = dao.recommandMovieFeelData(feel);
-		
-		List<MovieNavDTO> movielist = mgr.navermovielist();
-		
-		
-		// Best3 Time Show - 한번만 해놓고 몽고에 저장한 값을 가지고 처리하는 것, 주석처리요망
-		/*String[] timeshow = {"조조","오전","오후","야간","심야"};
-		String query = "";
-		
-		for(int i=0; i<timeshow.length; i++){
-			System.out.println("===================================================================");
-			List<MovieVO> arr = new ArrayList<MovieVO>();
-			for(int j=0; j<13; j++){
-				query = "영화"+timeshow[i]+" "+movielist.get(j).getTitle();
-				int count = naver.totalCount(query);
-				
-				MovieVO vo = new MovieVO();
-				vo.setTitle(movielist.get(j).getTitle());
-				vo.setCount(count);
-				arr.add(vo);
-			} // 조조 영화 모음
+		List<String> flist = dao.recommandFeelData();			//1. 84개의 몽고디비의 중복없는 감정 값 들고오기
+		List<MovieNavDTO> movielist = mgr.navermovielist();	//2. 84개의 영화 데이터 목록 
+		String feel="재미";
 			
-			//  정렬
-			for(int m=0; m<arr.size()-1; m++){
-				for(int n=m+1; n<arr.size(); n++){
-					if(arr.get(m).getCount()<arr.get(n).getCount()){
-						MovieVO temp = arr.get(m);
-						arr.set(m, arr.get(n));
-						arr.set(n, temp);
-					}
-				}
-			}
-			
-			for(int z=0; z<arr.size(); z++){
-				System.out.println(arr.get(z).getCount()+" "+arr.get(z).getTitle());
-			}
-			
-		}*/
-		
-		
-		
-		
 		model.addAttribute("movielist",movielist);
 		model.addAttribute("feel",feel);
 		model.addAttribute("flist",flist);
-		model.addAttribute("list",list);
-		model.addAttribute("mflist",mflist);
+
 		return "pages/recommand";
 	}
+																								
+	@RequestMapping("main/recommandEmotion.do")										/* 추천페이지 _ 감정 */
+	public String movie_recommand_Emotion(Model model, String feel){
+				
+		List<String> flist = dao.recommandFeelData();				//감정 리스트		
+		List<String> mlist = dao.recommandTitleData(feel);			//감정영화리스트
+		List<Integer> mlist2 = dao.recommandTitleData2(feel);			//감정영화리스트count
+		
+		List<MovieNavDTO> mndto=new ArrayList<MovieNavDTO>();
+		
+		int i=0;
+		for(String title:mlist){
+			if(i<3){
+				mndto.add(mgr.movieDetail(title));
+				mndto.get(i).setCount(mlist2.get(i));
+			}	
+			i++;
+		}
+		
+		model.addAttribute("feel",feel);			//감정
+		model.addAttribute("flist",flist);		//감정리스트
+		model.addAttribute("mndto",mndto);		//감정영화리스트 3개
+		
+		return "pages/recEmotion";
+	}
+	
+	
+	
 	
 	@RequestMapping("main/time.do")
 	public String movie_time(String showtime,Model model){

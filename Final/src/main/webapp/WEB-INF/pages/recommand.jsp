@@ -91,28 +91,6 @@
 
 
 <script type="text/javascript">
-	google.charts.load('current', {
-		'packages' : [ 'corechart' ]
-	});
-	google.charts.setOnLoadCallback(drawChart);
-	function drawChart() {
-
-		var data = google.visualization.arrayToDataTable([
-				[ '영화명', '감성' ],
-				<c:forEach var="vo" items="${mflist}">[
-						'<c:out value="${vo.title}"/>',
-						<c:out value="${vo.count}"/>], </c:forEach> ]);
-
-		var options = {
-			title : '영화 추천'
-		};
-
-		var chart = new google.visualization.PieChart(document
-				.getElementById('piechart'));
-
-		chart.draw(data, options);
-	}
-
 	$(function() {
 		$('#feel').change(function() {
 			$('#frm').submit();
@@ -125,69 +103,53 @@
 		});
 	});
 </script>
+
+
 </head>
 <body>
 
 	<div class="container">
 		<div class="row">
-			<br> <br> <br> <br> <br> <br>
+			<br> <br> <br> <br>
 			<div class="col-md-12">
 				<div class="row">
-					<div class="col-md-8">
-						<table class="table_content" width="1000px">
-							<tr>
-								<td>
-									<h3>기분에 따른 영화 추천</h3>
-								</td>
-								<td>
-									<form method="post" action="recommand.do" id=frm>
-										<select name="feel" id="feel" style="width: 150px;">
-											<c:forEach var="str" items="${flist }">
-												<c:if test="${str==feel }">
-													<option selected="selected">${str }</option>
-												</c:if>
+					<div class="col-md-8" style="color: black;">
+						<h3>기분에 따른 영화 추천</h3>
 
-												<c:if test="${str!=feel }">
-													<option>${str }</option>
-												</c:if>
-											</c:forEach>
-										</select>
-									</form>
-								</td>
-								<td rowspan="2">
-									<div class="col-md-4" style="color: black;">
-										<button value="현재 상영작 리스트"
-											style="color: black; width: 250px; height: 100px;"></button>
-									</div>
-								</td>
-							</tr>
-							</div>
-							<tr>
-								<div class="col-md-8">
-									<td>
-										<h3>시간에 따른 영화 추천</h3>
-									</td>
-									<form method="post" action="time.do" id="timefrm"
-										accept-charset="UTF-8">
-										<td><select name="showtime" id="showtime"
-											style="width: 150px;">
-												<option>시간</option>
-												<option>오전</option>
-												<option>오후</option>
-												<option>조조</option>
-												<option>심야</option>
-												<option>야간</option>
-										</select></td>
-									</form>
-								</div>
-							</tr>
-						</table>
+						<form method="post" action="recommandEmotion.do" id="frm"
+							accept-charset="UTF-8">
+							<select name="feel" id="feel">
+								<c:forEach var="str" items="${flist }">
+									<c:if test="${str==feel }">
+										<option selected="selected">${str }</option>
+									</c:if>
+
+									<c:if test="${str!=feel }">
+										<option>${str }</option>
+									</c:if>
+								</c:forEach>
+							</select>
+						</form>
+					</div>
+
+					<div class="col-md-8" style="color: black;">
+						<h3>시간에 따른 영화 추천</h3>
+
+						<form method="post" action="time.do" id="timefrm"
+							accept-charset="UTF-8">
+							<select name="showtime" id="showtime">
+								<option>--시간--</option>
+								<option>오전</option>
+								<option>오후</option>
+								<option>조조</option>
+								<option>심야</option>
+							</select>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<br>
 	<hr>
 
@@ -237,7 +199,9 @@
 								<td>${vo.reserve }%</td>
 								<td>${vo.star }점</td>
 								<td>${vo.movietime }분</td>
-								<td><%-- <img src="${vo.poster }"> --%>포스터보기</td>
+								<td>
+									<%-- <img src="${vo.poster }"> --%>포스터보기
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

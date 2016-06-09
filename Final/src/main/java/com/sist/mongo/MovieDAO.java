@@ -21,9 +21,9 @@ public class MovieDAO {
 	
 	public MovieDAO(){
 		try{	
-			mc = new MongoClient(new ServerAddress("localhost",27017));
+			mc = new MongoClient(new ServerAddress("211.238.142.77",27017));
 			db = mc.getDB("mydb");
-			dbc = db.getCollection("test");
+			dbc = db.getCollection("recommandemotion");				//추천페이지_감정데이터 가져오기
 			dbc_when = db.getCollection("when");
 			
 			
@@ -33,7 +33,7 @@ public class MovieDAO {
 	}
     
 	// 저장
-	public void recommandInsert(MovieVO vo){
+	/*public void recommandInsert(MovieVO vo){
 		try{
 			int max = 0;
 			DBCursor cursor = dbc.find();
@@ -90,35 +90,105 @@ public class MovieDAO {
 		}catch(Exception ex){
 			System.out.println("recommandInsert: "+ex.getMessage());
 		}
-	}
+	}*/
 	
 	// 감성 (중복없이)
 	public List<String> recommandFeelData(){
 		List<String> list = new ArrayList<String>();
 		try{
-			list = dbc.distinct("feel");
+			list = dbc.distinct("emotion");
 		}catch(Exception ex){System.out.println(ex.getMessage());}
 		
 		return list;
 	}
 	
 	// 감성 => 영화제목
-	public List<String> recommandTitleData(String feel){
-		List<String> list = new ArrayList<String>();
-		try{
+	public List<String> recommandTitleData(String emotion){
+			
+		List<String> list = new ArrayList<String>();			//감정
+		List<Integer> count = new ArrayList<Integer>();		//카운트
+		
+		try{			
 			BasicDBObject where = new BasicDBObject();
-			where.put("feel", feel);
+			where.put("emotion", emotion);	
 			
 			DBCursor cursor = dbc.find(where);
+			
 			while(cursor.hasNext()){
 				BasicDBObject obj = (BasicDBObject)cursor.next();
+				
+				System.out.println(obj.getString("title")+","+obj.getInt("count")+","+obj.getString("emotion")+"============");
+				
 				list.add(obj.getString("title"));
+				count.add(obj.getInt("count"));	
 			}
 			cursor.close();
+			
+			for(int i=0; i<count.size(); i++){
+				for(int j=i+1; j<count.size(); j++){
+					
+					if(count.get(i)<count.get(j)){
+						int temp9=count.get(i);
+						int temp8=count.get(j);
+						count.set(i,temp8);
+						count.set(j,temp9);
+						
+						String temp1=list.get(i);
+						String temp2=list.get(j);
+						list.set(i,temp2);
+						list.set(j,temp1);
+					}
+				}
+			}
+
 		}catch(Exception ex){System.out.println(ex.getMessage());}
 		
 		return list;
 	}
+	
+	// 감성 => 영화제목...count......
+		public List<Integer> recommandTitleData2(String emotion){
+				
+			List<String> list = new ArrayList<String>();			//감정
+			List<Integer> count = new ArrayList<Integer>();		//카운트
+			
+			try{			
+				BasicDBObject where = new BasicDBObject();
+				where.put("emotion", emotion);	
+				
+				DBCursor cursor = dbc.find(where);
+				
+				while(cursor.hasNext()){
+					BasicDBObject obj = (BasicDBObject)cursor.next();
+					
+					System.out.println(obj.getString("title")+","+obj.getInt("count")+","+obj.getString("emotion")+"============");
+					
+					list.add(obj.getString("title"));
+					count.add(obj.getInt("count"));	
+				}
+				cursor.close();
+				
+				for(int i=0; i<count.size(); i++){
+					for(int j=i+1; j<count.size(); j++){
+						
+						if(count.get(i)<count.get(j)){
+							int temp9=count.get(i);
+							int temp8=count.get(j);
+							count.set(i,temp8);
+							count.set(j,temp9);
+							
+							String temp1=list.get(i);
+							String temp2=list.get(j);
+							list.set(i,temp2);
+							list.set(j,temp1);
+						}
+					}
+				}
+
+			}catch(Exception ex){System.out.println(ex.getMessage());}
+			
+			return count;
+		}
 	
 	public List<MovieVO> recommandMovieFeelData(String feel){
 		
