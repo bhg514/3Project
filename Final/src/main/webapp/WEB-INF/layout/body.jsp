@@ -35,11 +35,11 @@
 						<div class="carousel">
 							<h2>인기 영화 Top 7</h2>
 							<div class="holder">
-								<c:forEach var="vo" items="${list }">
+								<c:forEach var="vo" items="${nList }">
 									<%-- <h2 style="color: white">${vo.no }위</h2>
 									<br> --%>
 									<a href="detail.do?no=${vo.no}" class="aImg" value="${vo.no }">
-										<img src="${vo.image }" width=250 height=300 border=0
+										<img src="${vo.poster }" width=250 height=300 border=0
 										id="m${vo.no }">
 									</a>
 									<%-- <br>

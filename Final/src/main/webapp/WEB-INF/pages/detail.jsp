@@ -23,18 +23,43 @@
 </script>
 </head>
 <body>
-	<center>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<div class="col-md-12 col-sm-12">
+<center>
+<h3>${vo.title } 상세정보</h3>
+<table id="table_content" style="width:800px">
+   <tr>
+      <td align=right>
+         <a href="list.do">목록</a>&nbsp;
+         <a href="recommand.do">추천</a>
+      </td>
+   </tr>
+</table>
+<table id="table_content" style="width:800px">
+   <tr>
+      <td width=40% class="tdcenter" rowspan="6">
+         <img src="${vo.poster }" width=320 height=400>
+      </td>
+      <th colspan="2">${vo.title }</th>
+   </tr>
+   <tr>
+      <td width=20% align=right>장르</td>
+      <td width=40% align=left>${vo.genre }</td>
+   </tr>
+   <tr>
+      <td width=20% align=right>예매율</td>
+      <td width=40% align=left>${vo.reserve }%</td>
+   </tr>
+   <tr>
+      <td width=20% align=right>상영시간</td>
+      <td width=40% align=left>${vo.movietime }분</td>
+   </tr>
+   <tr>
+      <td width=20% align=right>별점</td>
+      <td width=40% align=left>${vo.star }</td>
+   </tr>
+</table>
+<table>
+   <tr>
+      <td><canvas id='graph'></canvas></td>
 
 			<div class="col-md-1 col-sm-1"></div>
 			<div class="col-md-10">
