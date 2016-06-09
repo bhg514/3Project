@@ -16,7 +16,7 @@
     <table id="table_content">
       <tr>
        <td align=left>
-        <a href="board_insert.do" class="button">글쓰기</a>
+        <a href="board_insert.do" class="button"><b>글쓰기</b></a>
        </td>
       </tr>
     </table>
@@ -54,7 +54,7 @@
         </tr>
       </c:forEach>
     </table>
-    <table id="table_content">
+    <table class="table_bottom" id="table_content">
      <tr>
       <td align=right>
        <a href="board_list.do?page=${curpage>1?curpage-1:curpage }">이전</a>&nbsp;
@@ -66,6 +66,5 @@
   </center>
 </body>
 </html>
-
 
 

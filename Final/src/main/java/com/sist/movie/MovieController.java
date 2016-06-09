@@ -192,19 +192,27 @@ public class MovieController {
 		String[] timeshow = {"조조","오전","오후","야간","심야"};
 		String query = "";
 		int[] times = new int[5];
+		int sum = 0;
 		for(int i=0; i<times.length; i++){
 			query = timeshow[i]+" "+vo.getTitle();   // 조조 아가씨
 			
 			times[i] = naver.totalCount(query); 
-			
+			System.out.println(times[i]);
+			sum += times[i];
 		}
+		for(int i=0; i<times.length; i++){
+			double a = (times[i]/(double)sum)*100;
+			times[i] = (int)(Math.round(a));
+			//System.out.println(times[i]);
+		}
+		
 		
 		model.addAttribute("vo",vo);
 
 		model.addAttribute("whoText",whoText);
 		
 		model.addAttribute("bestValue",bestValue);
-
+		model.addAttribute("times",times);
 
 		//model.addAttribute("movieFeel",movieFeel);
 		model.addAttribute("fc",fc);
