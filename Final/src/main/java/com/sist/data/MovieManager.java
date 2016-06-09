@@ -252,7 +252,7 @@ public class MovieManager {
 		
 		StringBuffer sb = new StringBuffer();
 		try{
-			String key = "394451658bf4009bf7cc76c256a84e2e";		// daum API key
+			String key = "cdcb15981eecc6effefb51aa33302b28";		// daum API key
 			URL url = new URL("https://apis.daum.net/search/blog?apikey="+key
 							+"&result=20&output=json&q="+URLEncoder.encode(title,"UTF-8")+"&pageno="+page);	
 			
