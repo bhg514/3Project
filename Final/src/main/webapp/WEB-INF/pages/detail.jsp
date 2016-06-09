@@ -35,7 +35,6 @@
 		style="width:1000px;">
 	<tr height="50px">
 		<td align=right>
-			<a href="list.do">목록</a>&nbsp;
 			<a href="recommand.do">추천</a>
 		</td>
 	</tr>
@@ -141,7 +140,12 @@
 	<tr>
 		<td width="50%">
 			<h3 align=center style="padding-top:230px;margin-bottom:30px;">
-				영화  <b>'${vo.title }'</b>  감정 분석
+				<b>'${vo.title }'</b>  감정 분석
+			</h3>
+		</td>
+		<td width="50%">
+			<h3 align=center style="padding-top:230px;margin-bottom:30px;">
+				<b>'${vo.title }'</b>  에 대한 그래프 아무거나
 			</h3>
 		</td>
 	</tr>
@@ -311,17 +315,26 @@
         play();
         </script>
         <td>
+        <div style="width:500px;border:0.5px dotted #ccc;border-radius:20px;margin-bottom:130px;overflow:hidden;">
+        	
+        </div>
       </td>
 	</tr>
 	<tr>
 		<td>
 			<h3 align=center style="margin-top:60px;margin-bottom:30px;">
-				시간대별 영화 관람 수
+				시간대별 <b>'${vo.title }'</b> 관람 수
+			</h3>
+		</td>
+		<td>
+			<h3 align=center style="margin-top:60px;margin-bottom:30px;">
+				함께 보는 <b>'${vo.title }'</b>
 			</h3>
 		</td>
 	</tr>
 	<tr>
-		<td style="width:500;border:0.5px dotted #ccc;border-radius:20px;">
+		<td>
+		<div style="width:500px;border:0.5px dotted #ccc;border-radius:20px;margin-bottom:130px;overflow:hidden;">
 				<!-- ---------------------------------언제 그래프------------------------------------------------------------- -->
 		<?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://www.boxy-svg.com/bx">
@@ -374,12 +387,11 @@
 
   </g>
 </svg>
-		</td>
-		<td>
+</div>
+</td>
+<td>
 				<!-- ---------------------------------누구 그래프 --------------------------------------------------------------->
-    <div class="content">
-  <h1></h1>
-  
+    <div class="content" style="width:500px;height:510px;border:0.5px dotted #ccc;border-radius:20px;margin-bottom:130px;overflow:hidden;">
   <div id="donut-chart">
     <svg></svg>
   </div>
