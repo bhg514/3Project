@@ -15,7 +15,7 @@ public class WhoMapper extends Mapper<LongWritable, Text, Text, IntWritable>{
 	private final IntWritable one = new IntWritable(1);
 	private Text result = new Text();
 	
-	String[] feel = {
+	String[] feel = {"친구","애인","가족","오빠","자기","여친","남친","엄마","아빠","여자친구","남자친구"
 			//넣으세요
 	};
 	Pattern[] pattern = new Pattern[feel.length];
