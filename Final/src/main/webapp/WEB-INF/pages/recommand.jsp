@@ -35,6 +35,13 @@ $(function(){
 		$('#frm').submit();
 	});
 });
+
+$(function(){
+	$('#showtime').change(function(){
+		$('#timefrm').submit();
+	});
+});
+
 </script>
 </head>
 <body>
@@ -57,14 +64,17 @@ $(function(){
 				</form>
 			</td>
 			<td>
+				<form method="post" action="time.do" id="timefrm" accept-charset="UTF-8">
 				시간
-				:<select>
-				<option>--시간--</option>
-				<option>오전</option>
-				<option>오후</option>
-				<option>조조</option>
-				<option>심야</option>
+				:<select name="showtime" id="showtime">
+					<option>--시간--</option>
+					<option>오전</option>
+					<option>오후</option>
+					<option>조조</option>
+					<option>심야</option>
+					<option>야간</option>
 				</select>
+				</form>
 			</td>
 		</tr>
 	</table>
@@ -73,7 +83,7 @@ $(function(){
 		<c:forEach var="vo" items="${list }">
 			<td class="tdcenter">
 				<a href="detail.do?no=${vo.no }">
-				<img src="${vo.image }" border=0></a>
+				<img src="${vo.poster }" border=0></a>
 			</td>
 		</c:forEach>
 		</tr>

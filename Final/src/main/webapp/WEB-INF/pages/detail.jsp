@@ -32,29 +32,25 @@
 <table id="table_content" style="width:800px">
    <tr>
       <td width=40% class="tdcenter" rowspan="6">
-         <img src="${vo.image }" width=320 height=400>
+         <img src="${vo.poster }" width=320 height=400>
       </td>
       <th colspan="2">${vo.title }</th>
    </tr>
    <tr>
-      <td width=20% align=right>개봉일</td>
-      <td width=40% align=left>${vo.regdate }</td>
+      <td width=20% align=right>장르</td>
+      <td width=40% align=left>${vo.genre }</td>
    </tr>
    <tr>
       <td width=20% align=right>예매율</td>
       <td width=40% align=left>${vo.reserve }%</td>
    </tr>
    <tr>
-      <td width=20% align=right>선호도</td>
-      <td width=40% align=left>${vo.like }</td>
+      <td width=20% align=right>상영시간</td>
+      <td width=40% align=left>${vo.movietime }분</td>
    </tr>
    <tr>
       <td width=20% align=right>별점</td>
       <td width=40% align=left>${vo.star }</td>
-   </tr>
-   <tr>
-      <td width=20% align=right>등급</td>
-      <td width=40% align=left>${vo.grade }</td>
    </tr>
 </table>
 <table>

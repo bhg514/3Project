@@ -15,6 +15,7 @@ import com.sist.mapred.*;
 import com.sist.mapredEmotion.EmotionDriver;
 import com.sist.r.*;
 import com.sist.mongo.*;
+import com.sist.naver.NaverManager;
 import com.sist.search.*;
 @Controller
 public class MovieController {
@@ -27,19 +28,22 @@ public class MovieController {
 	private EmotionDriver 	ed;  //감정
 	
 	@Autowired
-	private MovieRManager		mr;
+	private MovieRManager	mr;
+	
+	@Autowired
+	private NaverManager		naver;
+	
 	@Autowired
 	private MovieDAO			dao;
 	
 	@RequestMapping("main/main.do")
 	public String movie_list(String title, Model model){
-		List<MovieDTO> list = mgr.movieAllData();
-		List<String> raList = mgr.movieRank();
+		//List<MovieDTO> list = mgr.movieAllData();
+		
 		List<String> reList = mgr.movieReserve();
-		List<String> bList = mgr.movieBoxoffice();
 		List<MovieNavDTO> nlist = mgr.navermovielist();
 		List<MovieNavDTO> nList = new ArrayList<MovieNavDTO>();
-		for(int i=0; i<9; i++){
+		for(int i=0; i<7; i++){
 			MovieNavDTO d = new MovieNavDTO();
 			d.setNo(nlist.get(i).getNo());
 			d.setPoster(nlist.get(i).getPoster());
@@ -54,13 +58,12 @@ public class MovieController {
 		if(title==null){
 		title="영화";
 		}
-		System.out.println(title+"컨트롤러");
+		
 		List<Item> newslist=NewsDAO.newsAllData(title);
 		model.addAttribute("newslist", newslist);
-		model.addAttribute("raList",raList);
 		model.addAttribute("reList",reList);
-		model.addAttribute("bList",bList);
-		model.addAttribute("list",list);
+		
+		//model.addAttribute("list",list);
 		model.addAttribute("nList",nList);
 		return "main";
 	}
@@ -71,7 +74,7 @@ public class MovieController {
 		File file = new File("/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
 		if(file.exists()) file.delete();
 				
-		MovieDTO vo = mgr.movieDetail(no); 	/* 1.영화상세정보 */
+		MovieNavDTO vo = mgr.movieDetail(no); 	/* 1.영화상세정보 */
 		
 		for(int i=1;i<=3;i++){				/* 2.댓글수집 60개 */
 			String json = mgr.review_data(vo.getTitle(), i);
@@ -110,10 +113,10 @@ public class MovieController {
 		
 		List<String> flist = dao.recommandFeelData();
 		List<String> mlist = dao.recommandTitleData(feel);
-		List<MovieDTO> list = new ArrayList<MovieDTO>();
+		List<MovieNavDTO> list = new ArrayList<MovieNavDTO>();
 
 		for(String title:mlist){
-			MovieDTO d = mgr.movieDetail(title);
+			MovieNavDTO d = mgr.movieDetail(title);
 			list.add(d);
 		}
 		
@@ -129,6 +132,30 @@ public class MovieController {
 		model.addAttribute("mflist",mflist);
 		return "pages/recommand";
 	}
+	
+	@RequestMapping("main/time.do")
+	public String movie_time(String showtime,Model model){
+		
+		String query = "";
+		
+		List<MovieNavDTO> list = mgr.navermovielist();
+		
+		
+		for(MovieNavDTO d:list){
+			
+			query = showtime+" "+d.getTitle();
+			int count = naver.totalCount(query);
+			//System.out.println(query+" >> "+count);
+		}
+		
+		
+		
+		
+		return "pages/recommand";
+	}
+	
+	
+	
 	
 	@RequestMapping("main/total.do")
 	public String main_total(Model model){
