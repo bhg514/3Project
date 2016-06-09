@@ -1,8 +1,6 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +24,6 @@
 
 
 <script>
-
 </script>
 </head>
 <body>
@@ -43,29 +40,25 @@
 <table id="table_content" style="width:800px">
 	<tr>
 		<td width=40% class="tdcenter" rowspan="6">
-			<img src="${vo.image }" width=320 height=400>
+			<img src="${vo.poster }" width=320 height=400>
 		</td>
 		<th colspan="2">${vo.title }</th>
 	</tr>
 	<tr>
-		<td width=20% align=right>개봉일</td>
-		<td width=40% align=left>${vo.regdate }</td>
+		<td width=20% align=right>장르</td>
+		<td width=40% align=left>${vo.genre }</td>
 	</tr>
 	<tr>
 		<td width=20% align=right>예매율</td>
 		<td width=40% align=left>${vo.reserve }%</td>
 	</tr>
 	<tr>
-		<td width=20% align=right>선호도</td>
-		<td width=40% align=left>♥ ${vo.like }</td>
+		<td width=20% align=right>상영시간</td>
+		<td width=40% align=left>♥ ${vo.movietime }</td>
 	</tr>
 	<tr>
 		<td width=20% align=right>별점</td>
 		<td width=40% align=left>${vo.star }</td>
-	</tr>
-	<tr>
-		<td width=20% align=right>등급</td>
-		<td width=40% align=left>${vo.grade }</td>
 	</tr>
 </table>
 <table>
@@ -73,72 +66,7 @@
 			<!-- ---------------------------------  감정 그래프 ------------------------------------------------------------- -->
 		<td><canvas id='graph'></canvas></td>
 
-			<div class="col-md-1 col-sm-1"></div>
-			<div class="col-md-10">
-				<h3>${vo.title }상세정보</h3>
-			</div>
-			<div class="col-md-1 col-sm-1"></div>
-
-
-			<div class="col-md-1 col-sm-1"></div>
-			<div class="col-md-5">
-				<img src="${vo.image }" width=320 height=400>
-			</div>
-
-			<div class="col-md-5">
-				<table class="table">
-					<tbody>
-						<tr>
-							<td>제목</td>
-							<td>${vo.title }</td>
-						</tr>
-
-						<tr>
-							<td>개봉일</td>
-							<td>${vo.regdate }</td>
-						</tr>
-
-						<tr>
-							<td>예매율</td>
-							<td>${vo.reserve }%</td>
-						</tr>
-
-						<tr>
-							<td>선호도</td>
-							<td>${vo.like }</td>
-						</tr>
-
-						<tr>
-							<td>별점</td>
-							<td>${vo.star }</td>
-						</tr>
-
-						<tr>
-							<td>등급</td>
-							<td>${vo.grade }</td>
-						</tr>
-					</tbody>
-				</table>
-
-			</div>
-			<div class="col-md-1 col-sm-1"></div>
-		</div>
-		<br>
-		<br>
-
-		<div class="col-md-1 col-sm-1"></div>
-		<div class="col-md-10">
-			<canvas id='graph'></canvas>
-		</div>
-		<br>
-		<br>
-		<div class="col-md-1 col-sm-1"></div>
-		<div class="col-md-5">누구랑</div>
-		<div class="col-md-5">언제</div>
-		<div class="col-md-1 col-sm-1"></div>
-
-
-		<script>
+        <script>
      // CUSTOMISABLE
         var sides  = 6;
         var canvasSize = 500;
@@ -155,7 +83,6 @@
 							</c:forEach>
 							];
         // CUSTOMISABLE
-
         // Variable
         var canvas = $('#graph')[0];
         var ctx = canvas.getContext('2d');
@@ -164,18 +91,13 @@
         var shapesArray = [];
         var dataArray = [];
         var radius = canvasSize/2-padding;
-
-
         canvas.width = canvasSize;
         canvas.height = canvasSize;
-
         // Prototypes
         Shape = function() {}
         Shape.pt = Shape.prototype;
-
         Point = function() {};
         Point.pt = Point.prototype;
-
         // Functions
         function loop() {
           ctx.clearRect(0,0,canvasSize,canvasSize);
@@ -205,7 +127,6 @@
             ctx.lineTo(shapesArray[0].points[i].x, shapesArray[0].points[i].y);
             ctx.stroke();
           }
-
           for (var j = 0; j < dataArray.length; j++) {
             var shape = dataArray[j];
             ctx.beginPath();
@@ -237,14 +158,11 @@
               ctx.fillText(feilds[i],shape.feilds[i].x,shape.feilds[i].y);
             }
             
-
           }
           
           
         }
-
         var timer = setInterval(loop, 1000/60);
-
         function setupShape(_sides, _radius, _fill, _stroke, _linewidth) {
           
           var shape = new Shape();
@@ -268,7 +186,6 @@
           shapesArray.push(shape);
           
         }
-
         function setupData(_data, _fill, _stroke, _linewidth) {
           var shape = new Shape();
           length = data.length;
@@ -296,30 +213,25 @@
             p.y  = centerY + cang*(radius+20);
             shape.feilds.push(p);
           }
-
           dataArray.push(shape);
           for(var i = 0; i < shape.points.length; i++) {
             TweenMax.from(shape.points[i], Math.random()*0.75+0.25, {x:canvasSize/2, y:canvasSize/2, delay:1.2});
           }
         }
-
         function play() {
           setupShape(sides, radius, '#175f45', '#3ad59c', 3);
           setupShape(sides, radius*3/4, '#2e6f58', '#208963', 1);
           setupShape(sides, radius/2, '#437e69', '#208963', 1);
           setupShape(sides, radius*1/4, '#1f8862', '#208963', 1);
-
           for (var j = 0; j < shapesArray.length; j++) {
             var shape = shapesArray[j];
             for(var i = 0; i < shape.points.length; i++) {
               TweenMax.from(shape.points[i], Math.random()*0.75+1, {x:canvasSize/2, y:canvasSize/2, ease:Elastic.easeOut});
             }
           }
-
           setupData(data, 'rgba(99, 223, 178, 0.5)', '#3ad59c', 2);
           
         }
-
         play();
         </script>
 	</tr>
@@ -386,8 +298,6 @@
     <svg></svg>
   </div>
 </div>
-
-
         <script>
      // Create the donut pie chart and insert it onto the page
         nv.addGraph(function() {
@@ -414,7 +324,6 @@
           	function centerText() {
         			return function() {
                 var svg = d3.select("svg");
-
             		var donut = svg.selectAll("g.nv-slice").filter(
                   function (d, i) {
                     return i == 0;
@@ -448,8 +357,6 @@
             
           return donutChart;
         });
-
-
         // Seed data to populate donut pie chart
         function seedData() {
           return [
@@ -459,7 +366,6 @@
 							
 					
               "label": "${who}",
-
               "value": '${who}'
             },
             </c:forEach>
@@ -467,7 +373,6 @@
           ];
         }
         </script>
-
     
     
     
@@ -481,20 +386,15 @@
 
         <script>
         function donutGraph(selector, percentage){
-
             'use strict';
-
             var height, width, radius, data, color, svg, g, bgArc, visArc, pie, path, vis;
-
             height = 75;
             width = 75;
             radius = Math.min(width, height) / 2;
-
             svg = d3.select(selector)
                 .append('svg')
                 .attr('viewBox', '0 0 ' + width + ' ' + height)
                 .attr('preserveAspectRatio', 'none');
-
             g = svg.append('g')
                 .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
           
@@ -508,38 +408,32 @@
                 .outerRadius(radius)
                 .startAngle(0) //converting from degs to radians
                 .endAngle(degTOrad(perTOdeg(100))); //just radians
-
             visArc = d3.svg.arc()
                 .innerRadius(radius / 1.18)
                 .outerRadius(radius)
                 .cornerRadius(20)
                 .startAngle(0) //converting from degs to radians
                 .endAngle(degTOrad(perTOdeg(percentage))); //just radians
-
             g.append("path")
                 .attr("d", bgArc)
                 .attr('class', 'background');
-
             g.append("path")
                 .attr("d", visArc)
                 .attr('class', 'visual');
-
             function perTOdeg(per) {
                 'use strict';
                 return 360 * per / 100;
             }
-
             function degTOrad(deg) {
                 'use strict';
                 return deg * (Math.PI / 180);
             }
-
         }
-
         donutGraph('.graph', '${bestCount/(bestCount+wortCount)*100}');
         
         </script>
 
+    
     
     
 		</td>
