@@ -78,9 +78,9 @@ public class MovieController {
 	@RequestMapping("main/detail.do")
 	public String movie_detail(int no,Model model) throws Exception{
 		
-		File file = new File("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
+		File file = new File("/home/seo/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
 		if(file.exists()) file.delete();
-/*		file = new File("/home/actif/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000");
+/*		file = new File("/home/seo/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000");
 		if(file.exists()) file.delete();*/
 				
 		MovieNavDTO vo = mgr.movieDetail(no); 	/* 1.영화상세정보 */

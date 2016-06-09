@@ -32,15 +32,16 @@ $(function(){
 </head>
 <body>
   <center>
-    <h3>삭제하기</h3>
+    <h2>삭제하기</h2>
+    <p>&nbsp;</p>>
     <form method=post action="board_delete_ok.do" id="frm">
     
-          <table id="table_content">
+          <table id="table_content" class="table_bottom">
            
            <tr>
-            <td width=15% align="right">비밀번호</td>
-            <td width=85% align="left">
-             <input type="password" size=10 name=pwd id="pwd">
+            <td align="center">
+            비밀번호&nbsp;&nbsp;
+             <input type="password" size=20 name=pwd id="pwd">
              <input type="hidden" name="no" value="${no }">
              <input type="hidden" name="page" value="${page }">
             </td>

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="../assets/table.css">
+<link rel="stylesheet" type="text/css" href="../table_detail.css">
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css'>
         <link rel="stylesheet" href="../assets/css/feel.css">
@@ -28,42 +29,125 @@
 </head>
 <body>
 <center>
-<h3>${vo.title } 상세보기</h3>
-<table id="table_content" style="width:800px">
-	<tr>
+<h2 style="margin-top:130px;">${vo.title } 상세보기</h2>
+<p>&nbsp;</p>
+<table id="table_content_top" class="table_bottom"
+		style="width:1000px;">
+	<tr height="50px">
 		<td align=right>
 			<a href="list.do">목록</a>&nbsp;
 			<a href="recommand.do">추천</a>
 		</td>
 	</tr>
 </table>
-<table id="table_content" style="width:800px">
+<table id="table_content" class="table_bottom" style="width:1000px">
 	<tr>
 		<td width=40% class="tdcenter" rowspan="6">
-			<img src="${vo.poster }" width=320 height=400>
+			<img src="${vo.poster }" width=420 height=500>
 		</td>
-		<th colspan="2">${vo.title }</th>
+		<th colspan="2" style="text-align: center;font-size:25px;">${vo.title }</th>
 	</tr>
 	<tr>
-		<td width=20% align=right>장르</td>
-		<td width=40% align=left>${vo.genre }</td>
+		<td width=30% align=right style="padding-right:80px;"><b>장르</b></td>
+		<td width=30% align=left>${vo.genre }</td>
 	</tr>
 	<tr>
-		<td width=20% align=right>예매율</td>
-		<td width=40% align=left>${vo.reserve }%</td>
+		<td width=30% align=right style="padding-right:80px;"><b>예매율</b></td>
+		<td width=30% align=left>${vo.reserve }%</td>
 	</tr>
 	<tr>
-		<td width=20% align=right>상영시간</td>
-		<td width=40% align=left>♥ ${vo.movietime }</td>
+		<td width=30% align=right style="padding-right:80px;"><b>상영시간</b></td>
+		<td width=30% align=left>♥ ${vo.movietime }</td>
 	</tr>
 	<tr>
-		<td width=20% align=right>별점</td>
-		<td width=40% align=left>${vo.star }</td>
+		<td width=30% align=right style="padding-right:80px;"><b>별점</b></td>
+		<td width=30% align=left>${vo.star }</td>
 	</tr>
 </table>
-<table>
+<p>&nbsp;</p>
+<table width="1000px">
+	<tr style="background:#9C9DA4;border-radius:50px;margin-bottom:70px;">
+		<td colspan="2" >
+			<h3 align=center style="">
+				영화  <b>'${vo.title }'</b>  통계 자료
+			</h3>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<h3 align=center style="margin-top:60px;margin-bottom:30px;">
+				긍정, 부정 그래프
+			</h3>
+		</td>
+	</tr>
+	<tr>
+		<td style="background:#fff;">
+			       	<!-- ---------------------------------호불호 그래프------------------------------------------------------------- -->
+    <div class="graph" style="	position:absolute;
+									top: 930px;"></div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
+
+        <script>
+        function donutGraph(selector, percentage){
+            'use strict';
+            var height, width, radius, data, color, svg, g, bgArc, visArc, pie, path, vis;
+            height = 75;
+            width = 75;
+            radius = Math.min(width, height) / 2;
+            svg = d3.select(selector)
+                .append('svg')
+                .attr('viewBox', '0 0 ' + width + ' ' + height)
+                .attr('preserveAspectRatio', 'none');
+            g = svg.append('g')
+                .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
+          
+            g.append('text')
+                .text(percentage + '%')
+                .attr('alignment-baseline', 'middle')
+                .attr('text-anchor', 'middle');
+          
+            bgArc = d3.svg.arc()
+                .innerRadius(radius / 1.25)
+                .outerRadius(radius)
+                .startAngle(0) //converting from degs to radians
+                .endAngle(degTOrad(perTOdeg(100))); //just radians
+            visArc = d3.svg.arc()
+                .innerRadius(radius / 1.18)
+                .outerRadius(radius)
+                .cornerRadius(20)
+                .startAngle(0) //converting from degs to radians
+                .endAngle(degTOrad(perTOdeg(percentage))); //just radians
+            g.append("path")
+                .attr("d", bgArc)
+                .attr('class', 'background');
+            g.append("path")
+                .attr("d", visArc)
+                .attr('class', 'visual');
+            function perTOdeg(per) {
+                'use strict';
+                return 360 * per / 100;
+            }
+            function degTOrad(deg) {
+                'use strict';
+                return deg * (Math.PI / 180);
+            }
+        }
+        donutGraph('.graph', '${bestCount/(bestCount+wortCount)*100}');
+        
+        </script>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="50%">
+			<h3 align=center style="padding-top:230px;margin-bottom:30px;">
+				영화  <b>'${vo.title }'</b>  감정 분석
+			</h3>
+		</td>
+	</tr>
 	<tr>
 			<!-- ---------------------------------  감정 그래프 ------------------------------------------------------------- -->
+		
 		<td><canvas id='graph'></canvas></td>
 
         <script>
@@ -234,9 +318,18 @@
         }
         play();
         </script>
+        <td>
+      </td>
 	</tr>
 	<tr>
 		<td>
+			<h3 align=center style="margin-top:60px;margin-bottom:30px;">
+				시간대별 영화 관람 수
+			</h3>
+		</td>
+	</tr>
+	<tr>
+		<td style="width:500;border:0.5px dotted #ccc;border-radius:20px;">
 				<!-- ---------------------------------언제 그래프------------------------------------------------------------- -->
 		<?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://www.boxy-svg.com/bx">
@@ -380,62 +473,7 @@
 	</tr>
 	<tr>
 		<td>
-		<!-- ---------------------------------호불호 그래프------------------------------------------------------------- -->
-    <div class="graph"></div>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
-
-        <script>
-        function donutGraph(selector, percentage){
-            'use strict';
-            var height, width, radius, data, color, svg, g, bgArc, visArc, pie, path, vis;
-            height = 75;
-            width = 75;
-            radius = Math.min(width, height) / 2;
-            svg = d3.select(selector)
-                .append('svg')
-                .attr('viewBox', '0 0 ' + width + ' ' + height)
-                .attr('preserveAspectRatio', 'none');
-            g = svg.append('g')
-                .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
-          
-            g.append('text')
-                .text(percentage + '%')
-                .attr('alignment-baseline', 'middle')
-                .attr('text-anchor', 'middle');
-          
-            bgArc = d3.svg.arc()
-                .innerRadius(radius / 1.25)
-                .outerRadius(radius)
-                .startAngle(0) //converting from degs to radians
-                .endAngle(degTOrad(perTOdeg(100))); //just radians
-            visArc = d3.svg.arc()
-                .innerRadius(radius / 1.18)
-                .outerRadius(radius)
-                .cornerRadius(20)
-                .startAngle(0) //converting from degs to radians
-                .endAngle(degTOrad(perTOdeg(percentage))); //just radians
-            g.append("path")
-                .attr("d", bgArc)
-                .attr('class', 'background');
-            g.append("path")
-                .attr("d", visArc)
-                .attr('class', 'visual');
-            function perTOdeg(per) {
-                'use strict';
-                return 360 * per / 100;
-            }
-            function degTOrad(deg) {
-                'use strict';
-                return deg * (Math.PI / 180);
-            }
-        }
-        donutGraph('.graph', '${bestCount/(bestCount+wortCount)*100}');
-        
-        </script>
-
-    
-    
-    
+	
 		</td>
 	</tr>
 </table>

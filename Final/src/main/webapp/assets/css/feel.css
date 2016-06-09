@@ -1,3 +1,6 @@
-body { background: #333; color: #fff; text-align:center; }
+body { background: #333; color: #fff; text-align:center;}
 
-#graph {border: 1px solid #111; }
+#graph {
+	border: .5px dotted #ccc; 
+	border-radius:20px;
+}

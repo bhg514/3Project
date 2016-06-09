@@ -9,23 +9,24 @@
 </head>
 <body>
   <center>
-    <h3>내용보기</h3>
+    <h2>내용보기</h2>
+    <p>&nbsp;&nbsp;&nbsp;</p>
     <table id="table_content">
       <tr height=27>
-        <th width=20%>번호</th>
+        <th width=20% style="text-align: center;">번호</th>
         <td width=30% align=center>${dto.no }</td>
-        <th width=20%>작성일</th>
+        <th width=20% style="text-align: center;">작성일</th>
         <td width=30% align=center>${dto.regdate }</td>
       </tr>
       <tr height=27>
-        <th width=20%>이름</th>
+        <th width=20% style="text-align: center;">이름</th>
         <td width=30% align=center>${dto.name }</td>
-        <th width=20%>조회수</th>
+        <th width=20% style="text-align: center;">조회수</th>
         <td width=30% align=center>${dto.hit }</td>
       </tr>
       <tr height=27>
-        <th width=20%>제목</th>
-        <td width=30% align=left colspan="3">${dto.subject }</td>
+        <th width=20% style="text-align: center;">제목</th>
+        <td width=30% style="padding-left:30px;" align=left colspan="3">${dto.subject }</td>
       </tr>
       <tr>
         <td colspan="4" align="left" valign="top" height=200>
@@ -33,7 +34,7 @@
         </td>
       </tr>
     </table>
-    <table border=0 width=600>
+    <table border=0 width=600 class="table_bottom">
       <tr>
        <td align=right>
          <a href="board_reply.do?no=${dto.no }&page=${page}">
@@ -45,10 +46,6 @@
                              =====> ReplyModel(처리) =====> 
                              DispatcherServlet(Controller)
                               ==> jsp
-                                                                                        
-                                                                                     
-                                 
-                            
          --%>
          <img src="../image/btn_reply.gif"></a>
          <a href="board_update.do?no=${dto.no }&page=${page}">
@@ -63,7 +60,6 @@
   </center>
 </body>
 </html>
-
 
 
 

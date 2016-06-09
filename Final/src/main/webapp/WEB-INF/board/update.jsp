@@ -52,14 +52,15 @@ $(function(){
 </head>
 <body>
   <center>
-    <h3>수정하기</h3>
+    <h2>수정하기</h2>
+    <p>&nbsp;</p>
     <form method=post action="board_update_ok.do" id="frm">
     
           <table id="table_content">
            <tr>
             <td width=15% align="right">이름</td>
             <td width=85% align="left">
-             <input type="text" name=name size=12 id="name" value="${vo.name }">
+             <input type="text" name=name size=30 id="name" value="${vo.name }">
              <input type="hidden" name=no value="${vo.no }">
              <input type="hidden" name=page value="${page }">
             </td>
@@ -67,19 +68,19 @@ $(function(){
            <tr>
             <td width=15% align="right">제목</td>
             <td width=85% align="left">
-             <input type="text" name=subject size=45 id="subject" value="${vo.subject }">
+             <input type="text" name=subject size=70 id="subject" value="${vo.subject }">
             </td>
            </tr>
            <tr>
             <td width=15% align="right">내용</td>
             <td width=85% align="left">
-             <textarea rows="10" cols="50" name=content id="content">${vo.content }</textarea>
+             <textarea rows="10" cols="70" name=content id="content">${vo.content }</textarea>
             </td>
            </tr>
            <tr>
             <td width=15% align="right">비밀번호</td>
             <td width=85% align="left">
-             <input type="password" size=10 name=pwd id="pwd">
+             <input type="password" size=30 name=pwd id="pwd">
             </td>
            </tr>
            <tr>

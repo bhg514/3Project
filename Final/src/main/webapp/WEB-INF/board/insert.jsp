@@ -52,10 +52,10 @@ $(function(){
 </head>
 <body>
   <center>
-    <h3>글쓰기</h3>
+    <h2>글쓰기</h2>
+    <p>&nbsp;</p>
     <form method=post action="board_insert_ok.do" id="frm">
-    
-          <table id="table_content">
+          <table id="table_content" class="table_bottom">
            <tr>
             <td width=15% align="right">이름</td>
             <td width=85% align="left">
@@ -93,7 +93,6 @@ $(function(){
    </center>
 </body>
 </html>
-
 
 
 
