@@ -17,12 +17,15 @@ public class MovieDAO {
 	private MongoClient		mc;
 	private DB					db;
 	private DBCollection		dbc;
+	private DBCollection		dbc_when;
 	
 	public MovieDAO(){
 		try{	
 			mc = new MongoClient(new ServerAddress("localhost",27017));
 			db = mc.getDB("mydb");
 			dbc = db.getCollection("test");
+			dbc_when = db.getCollection("when");
+			
 			
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -136,6 +139,16 @@ public class MovieDAO {
 		}catch(Exception ex){System.out.println(ex.getMessage());}
 		
 		return list;
+	}
+	
+	
+	public void recomTimeData(){
+		
+		try{
+			
+		}catch(Exception ex){
+			System.out.println("mongoTimeInsert : "+ex.getMessage());
+		}
 	}
 	
 }

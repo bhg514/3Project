@@ -152,6 +152,18 @@ public class MovieController {
 		}
 		int top=feelCount[0];
 
+		
+		// 조조 야간 오전 오후 심야
+		String[] timeshow = {"조조","오전","오후","야간","심야"};
+		String query = "";
+		int[] times = new int[5];
+		for(int i=0; i<times.length; i++){
+			query = timeshow[i]+" "+vo.getTitle();   // 조조 아가씨
+			
+			times[i] = naver.totalCount(query); 
+			
+		}
+		
 		model.addAttribute("vo",vo);
 		model.addAttribute("top",top);
 		model.addAttribute("whoKey",whoKey);
@@ -183,6 +195,43 @@ public class MovieController {
 		List<MovieVO> mflist = dao.recommandMovieFeelData(feel);
 		
 		List<MovieNavDTO> movielist = mgr.navermovielist();
+		
+		
+		// Best3 Time Show - 한번만 해놓고 몽고에 저장한 값을 가지고 처리하는 것, 주석처리요망
+		/*String[] timeshow = {"조조","오전","오후","야간","심야"};
+		String query = "";
+		
+		for(int i=0; i<timeshow.length; i++){
+			System.out.println("===================================================================");
+			List<MovieVO> arr = new ArrayList<MovieVO>();
+			for(int j=0; j<13; j++){
+				query = "영화"+timeshow[i]+" "+movielist.get(j).getTitle();
+				int count = naver.totalCount(query);
+				
+				MovieVO vo = new MovieVO();
+				vo.setTitle(movielist.get(j).getTitle());
+				vo.setCount(count);
+				arr.add(vo);
+			} // 조조 영화 모음
+			
+			//  정렬
+			for(int m=0; m<arr.size()-1; m++){
+				for(int n=m+1; n<arr.size(); n++){
+					if(arr.get(m).getCount()<arr.get(n).getCount()){
+						MovieVO temp = arr.get(m);
+						arr.set(m, arr.get(n));
+						arr.set(n, temp);
+					}
+				}
+			}
+			
+			for(int z=0; z<arr.size(); z++){
+				System.out.println(arr.get(z).getCount()+" "+arr.get(z).getTitle());
+			}
+			
+		}*/
+		
+		
 		
 		
 		model.addAttribute("movielist",movielist);
