@@ -7,23 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="table.css">
-<script src="../../assets/js/recommand.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
-<script>
-var $table = $('#table');
-
-$(function () {
-    $table.on('post-body.bs.table', function () {
-        $table.bootstrapTable('mergeCells', {
-            index: 0,
-            field: 'name',
-            rowspan: 5
-        });
-    });
-});
-</script>
 <script type="text/javascript">
 	google.charts.load('current', {
 		'packages' : [ 'corechart' ]
@@ -139,18 +125,29 @@ $(function () {
 				</td>
 			</tr>
 		</table> --%>
-		<table id="table" data-toggle="table"
-			data-url="/gh/get/response.json/wenzhixin/bootstrap-table/tree/master/docs/data/data1/">
-			<thead>
-				<tr>
-					<th data-field="name">Name</th>
-					<th data-field="stargazers_count">Stars</th>
-					<th data-field="forks_count">Forks</th>
-					<th data-field="description">Description</th>
-				</tr>
-			</thead>
+		
+		<table class="table table-hover">
+		<thead>
+			<tr>
+				<td rowspan="6">포스터</td>
+				<td>No.</td>
+				<td>제목</td>
+				<td>장르</td>
+				<td>예약순위</td>
+				<td>평점</td>
+				<td>상영시간</td>
+			</tr>
+			<tr>
+				<td colspan="6">data1</td>
+				<td>data2</td>
+				<td>data3</td>
+				<td>data4</td>
+				<td>data5</td>
+				<td>data6</td>
+			</tr>
+		</thead>
 		</table>
-
+	
 
 
 		<div class="container">
@@ -182,8 +179,6 @@ $(function () {
 				</c:forEach>
 			</table>
 		</div>
-
-
 
 
 		<table id="table_content" width=900 border=1 style="color: black;">
