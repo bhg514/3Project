@@ -22,11 +22,11 @@
     </table>
     <table id="table_content">
       <tr>
-       <th width=10%>번호</th>
-       <th width=45%>제목</th>
-       <th width=15%>이름</th>
-       <th width=20%>작성일</th>
-       <th width=10%>조회수</th>
+       <th width=10% class="tdcenter">번호</th>
+       <th width=45% class="tdcenter">제목</th>
+       <th width=15% class="tdcenter">이름</th>
+       <th width=20% class="tdcenter">작성일</th>
+       <th width=10% class="tdcenter">조회수</th>
       </tr>
       <c:forEach var="dto" items="${list }">
         <tr class="dataTr">

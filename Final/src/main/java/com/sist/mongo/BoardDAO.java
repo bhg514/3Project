@@ -15,7 +15,7 @@ public class BoardDAO {
     {
     	try
     	{
-    		mc=new MongoClient("localhost");
+    		mc=new MongoClient("211.238.142.77");
     		db=mc.getDB("mydb"); // use mydb
     		dbc=db.getCollection("board");// CREATE OR REPLACE 
     	}catch(Exception ex)
@@ -284,8 +284,8 @@ public class BoardDAO {
     			{
     				BasicDBObject up=
     					new BasicDBObject();
-    				up.put("subject", "���ڰ� ������ �Խù��Դϴ�");
-    				up.put("content", "���ڰ� ������ �Խù��Դϴ�");
+    				up.put("subject", "관리자가 삭제한 게시글입니다.");
+    				up.put("content", "관리자가 삭제한 게시글입니다.");
     				dbc.update(where, new BasicDBObject("$set",up));
     			}
     			

@@ -29,7 +29,7 @@
 					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a class="page-scroll" href="recommand.do">추천</a></li>
-					<li><a class="page-scroll" href="../board/board_list.do">커뮤니티</a></li>
+					<li><a class="page-scroll" href="../main/board_list.do">커뮤니티</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

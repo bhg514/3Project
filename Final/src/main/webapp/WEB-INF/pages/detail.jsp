@@ -29,13 +29,12 @@
 </head>
 <body>
 <center>
-<h2 style="margin-top:130px;">${vo.title } 상세보기</h2>
+<h2 style="margin-top:130px;"><b>'${vo.title }'</b> 상세보기</h2>
 <p>&nbsp;</p>
 <table id="table_content_top" class="table_bottom"
 		style="width:1000px;">
 	<tr height="50px">
 		<td align=right>
-			<a href="list.do">목록</a>&nbsp;
 			<a href="recommand.do">추천</a>
 		</td>
 	</tr>
@@ -137,7 +136,6 @@
         </script>
 		</td>
 	</tr>
-
 	<tr>
 		<td width="50%">
 			<h3 align=center style="padding-top:230px;margin-bottom:30px;">
@@ -149,6 +147,8 @@
 				시간대별 <b>'${vo.title }'</b> 관람 수
 			</h3>
 		</td>
+		<tr>
+	</tr>
 	</tr>
 	<tr>
 			<!-- ---------------------------------  감정 그래프 ------------------------------------------------------------- -->
@@ -374,8 +374,8 @@
 		<td colspan="2">
 				<!-- ---------------------------------wordcloud --------------------------------------------------------------->
 				
-				 <div id="cloud" style="">
-    <canvas width="800" height="400" id="myCanvas">
+				 <div id="cloud" style="width:500;border:0.5px dotted #ccc;border-radius:20px;overflow:hidden;margin-bottom:130px;">
+    <canvas width="800" height="400" id="myCanvas" align="center">
         <p>Anything in here will be replaced on browsers that support the canvas element</p>
         <ul class="weighted" style="font-size: 50%" id="weightTags">
           <%=request.getAttribute("wordCloud")%>

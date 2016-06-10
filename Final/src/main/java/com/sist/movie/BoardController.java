@@ -17,7 +17,7 @@ public class BoardController {
 	 @Resource(name="boardDAO")
      private BoardDAO dao;
      
-     @RequestMapping("board/board_list.do")
+     @RequestMapping("main/board_list.do")
      public String board_list(String page,Model model)
      {
     	 if(page==null)
@@ -33,19 +33,19 @@ public class BoardController {
     	 return "board/list";
      }
      
-     @RequestMapping("board/board_insert.do")
+     @RequestMapping("main/board_insert.do")
      public String board_insert()
      {
     	 return "board/insert";
      }
      
-     @RequestMapping("board/board_insert_ok.do")
+     @RequestMapping("main/board_insert_ok.do")
      public String board_insert_ok(BoardVO vo)
      {
     	 dao.boardInsert(vo);
-    	 return "redirect:/board/board_list.do";
+    	 return "redirect:/main/board_list.do";
      }
-     @RequestMapping("board/board_content.do")
+     @RequestMapping("main/board_content.do")
      public String board_content(int no,int page,Model model)
      {
     	 // DB���� 
@@ -54,7 +54,7 @@ public class BoardController {
     	 model.addAttribute("page", page);
     	 return "board/content";
      }
-     @RequestMapping("board/board_update.do")
+     @RequestMapping("main/board_update.do")
      public String board_update(int no,int page,Model model)
      {
     	 BoardVO vo=dao.boardContent(no, 2);
@@ -62,7 +62,7 @@ public class BoardController {
     	 model.addAttribute("page", page);
     	 return "board/update";
      }
-     @RequestMapping("board/board_update_ok.do")
+     @RequestMapping("main/board_update_ok.do")
      @ResponseBody
      public String board_update_ok(int page,BoardVO vo)
      {
@@ -78,28 +78,28 @@ public class BoardController {
     	 }
     	 return url;
      }
-     @RequestMapping("board/board_reply.do")
+     @RequestMapping("main/board_reply.do")
      public String board_reply(int no,int page,Model model)
      {
     	 model.addAttribute("no", no);
     	 model.addAttribute("page", page);
     	 return "board/reply";// forward
      }
-     @RequestMapping("board/board_reply_ok.do")
+     @RequestMapping("main/board_reply_ok.do")
      public String board_reply_ok(int pno,int page,BoardVO vo)
      {
     	 // DB���� 
     	 dao.boardReply(pno, vo);
     	 return "redirect:/board/board_list.do?page="+page;//sendRedirect
      }
-     @RequestMapping("board/board_delete.do")
+     @RequestMapping("main/board_delete.do")
      public String board_delete(int no,int page,Model model)
      {
     	 model.addAttribute("no", no);
     	 model.addAttribute("page", page);
     	 return "board/delete";
      }
-     @RequestMapping("board/board_delete_ok.do")
+     @RequestMapping("main/board_delete_ok.do")
      @ResponseBody
      public String board_delete_ok(int page,int no,String pwd)
      {
