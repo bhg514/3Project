@@ -24,7 +24,7 @@ public class MovieDAO {
 			mc = new MongoClient(new ServerAddress("211.238.142.77",27017));
 			db = mc.getDB("mydb");
 			dbc = db.getCollection("recommandemotion");				//추천페이지_감정데이터 가져오기
-			dbc_when = db.getCollection("when");
+			dbc_when = db.getCollection("recommandtime");
 			
 			
 		}catch(Exception ex){
@@ -212,13 +212,41 @@ public class MovieDAO {
 	}
 	
 	
-	public void recomTimeData(){
-		
+	public List<MovieVO> recomTimeData(String time){
+		List<MovieVO> list = new ArrayList<MovieVO>();
 		try{
+			BasicDBObject where = new BasicDBObject();
+			where.put("time", time);
+			
+			DBCursor cursor = dbc_when.find(where);
+			while(cursor.hasNext()){
+				BasicDBObject obj = (BasicDBObject)cursor.next();
+				
+				MovieVO vo = new MovieVO();
+				vo.setTitle(obj.getString("title"));
+				vo.setCount(obj.getInt("count"));
+				list.add(vo);
+			}
+			
+			for(int i=0; i<list.size()-1; i++){
+				for(int j=i+1; j<list.size(); j++){
+					
+					if(list.get(i).getCount()<list.get(j).getCount()){
+						
+						MovieVO temp = list.get(i);
+						list.set(i, list.get(j));
+						list.set(j, temp);
+						
+					}
+				}
+			}
+			
 			
 		}catch(Exception ex){
-			System.out.println("mongoTimeInsert : "+ex.getMessage());
+			System.out.println("mongoTimedata : "+ex.getMessage());
 		}
+		
+		return list;
 	}
 	
 }

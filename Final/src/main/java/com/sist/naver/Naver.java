@@ -21,7 +21,7 @@ public class Naver  {
 		 
 		try{
 			int page=1;
-				while(page<=1001){					//300개 블로그 글
+				while(page<=501){					//30개 블로그 글
 					String key = "197d457a077b8a11007af85847f73ac1";					
 					String searchWord  = URLEncoder.encode(search ,"utf-8");
 					
@@ -31,15 +31,15 @@ public class Naver  {
 					
 					NodeList items = (NodeList) xpath.evaluate("//item", documentInfo, XPathConstants.NODESET );					
 					NodeList description = (NodeList) xpath.evaluate("//item/description", documentInfo, XPathConstants.NODESET );
-/*					File file=new File("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
+					/*File file=new File("/home/sist/git/3Project/Final/src/main/webapp/text/movieTime.txt");
 					if(file.exists())
 						file.delete();
-					FileWriter fw =new FileWriter(file);					
+					FileWriter fw =new FileWriter(file);*/					
 					for(int i = 0; i < items.getLength(); i++)	{			
-						fw.write(description.item(i).getTextContent());
+						//fw.write(description.item(i).getTextContent());
 						list.add(description.item(i).getTextContent());
 					}
-					fw.close();*/
+					//fw.close();
 					page=page+10;
 				}
 			}catch(Exception ex){

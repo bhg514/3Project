@@ -17,6 +17,7 @@ public class WhenMapper extends Mapper<LongWritable, Text, Text, IntWritable>{
 	
 	String[] feel = {
 			//넣으세요
+			"조조","오전","오후","심야"
 	};
 	Pattern[] pattern = new Pattern[feel.length];
 	

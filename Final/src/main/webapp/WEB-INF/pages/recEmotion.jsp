@@ -1,23 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="../assets/table.css">
-<link rel="stylesheet" type="text/css" href="../table_detail.css">
-  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css'>
-        <link rel="stylesheet" href="../assets/css/feel.css">
-        <link rel="stylesheet" href="../assets/css/who.css">
-                <link rel="stylesheet" href="../assets/css/good.css">
-		    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.8/TweenMax.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js'></script>
+<!-- <link rel="stylesheet" type="text/css" href="../assets/table.css">
+<link rel="stylesheet" type="text/css" href="../table_detail.css"> -->
+<link rel='stylesheet prefetch'
+	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch'
+	href='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css'>
+<link rel="stylesheet" href="../assets/css/feel.css">
+<link rel="stylesheet" href="../assets/css/who.css">
+<link rel="stylesheet" href="../assets/css/good.css">
+<script
+	src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script
+	src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.8/TweenMax.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
+<script
+	src='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js'></script>
 
 
 <!-- graph -->
@@ -72,19 +77,20 @@ var chart = AmCharts.makeChart( "chartdiv", {
 			$('#timefrm').submit();
 		});
 	});
-</script> 
+</script>
 </head>
 
 <body>
-<center>
+	<center>
 		<br> <br> <br> <br> <br> <br> <br>
 		<br> <br> <br>
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-8" style="color: black;">
 					<h3>기분에 따른 영화 추천</h3>
-					
-					<form method="post" action="recommandEmotion.do" id="frm" accept-charset="UTF-8">
+
+					<form method="post" action="recommandEmotion.do" id="frm"
+						accept-charset="UTF-8">
 						<select name="feel" id="feel">
 							<c:forEach var="str" items="${flist }">
 								<c:if test="${str==feel }">
@@ -115,38 +121,36 @@ var chart = AmCharts.makeChart( "chartdiv", {
 				</div>
 			</div>
 		</div>
-		
-		
-			<!-- 영화목록 -->
-		
-			<table id="table_content" width=900 border=1 style="color: black;">
-				<c:forEach var="vo" items="${mndto }">
-					<tr>
-						<td rowspan=6><img src="${vo.poster }" width=100%></td>
-					</tr>
-					<tr>
-						<td>${vo.title }</td>
-					</tr>
-					<tr>
-						<td>${vo.genre }</td>
-					</tr>
-					<tr>
-						<td>${vo.reserve }%</td>
-					</tr>
-					<tr>
-						<td>${vo.star }점</td>
-					</tr>
-					<tr>
-						<td>상영시간 : ${vo.movietime }</td>
-					</tr>
-				</c:forEach>
-	
-			</table>
-			
-			
+
+
+		<!-- 영화목록 -->
+
+		<table id="table_content" width=900 border=1 style="color: black;">
+			<c:forEach var="vo" items="${mndto }">
+				<tr>
+					<td rowspan=6><img src="${vo.poster }" width=100%></td>
+				</tr>
+				<tr>
+					<td>${vo.title }</td>
+				</tr>
+				<tr>
+					<td>${vo.genre }</td>
+				</tr>
+				<tr>
+					<td>${vo.reserve }%</td>
+				</tr>
+				<tr>
+					<td>${vo.star }점</td>
+				</tr>
+				<tr>
+					<td>상영시간 : ${vo.movietime }</td>
+				</tr>
+			</c:forEach>
+
+		</table>
+
+
 		<!-- 그래프  -->
 		<div id="chartdiv"></div>
-																				
-		
 </body>
 </html>

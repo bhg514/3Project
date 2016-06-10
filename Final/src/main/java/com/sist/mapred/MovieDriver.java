@@ -55,7 +55,7 @@ public class MovieDriver {
 			   FileSystem fs1=FileSystem.get(conf);
 			   // hadoop fs -cat /
 			   fs1.copyFromLocalFile(
-					   new Path("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt"), 
+					   new Path("/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt"), 
 					   new Path("/input/emotion/emotion.txt"));	
 			   fs1.close();
 			   
@@ -70,7 +70,7 @@ public class MovieDriver {
 			   FileSystem fs=FileSystem.get(conf);
 			   fs.copyToLocalFile(
 					   new Path("/output/local/part-r-00000"),
-					   new Path("/home/actif/git/san/San/src/main/webapp/data/naver/output/local/part-r-00000"));
+					   new Path("/home/sist/git/san/San/src/main/webapp/data/naver/output/local/part-r-00000"));
 			   fs.close();			   
 				
 		   }catch(Exception ex)
@@ -97,9 +97,9 @@ public class MovieDriver {
 			job.setOutputKeyClass(Text.class);
 			job.setOutputValueClass(IntWritable.class);
 			
-			FileInputFormat.addInputPath(job, new Path("/home/actif/git/3Project/Final/src/main/webapp/text/desc.txt"));
+			FileInputFormat.addInputPath(job, new Path("/home/sist/git/3Project/Final/src/main/webapp/text/desc.txt"));
 			
-			File dir= new File("/home/actif/git/3Project/Final/src/main/webapp/output");
+			File dir= new File("/home/sist/git/3Project/Final/src/main/webapp/output");
 			if(dir.exists()){
 				File[] files = dir.listFiles();
 				for(File f:files){
@@ -108,7 +108,7 @@ public class MovieDriver {
 				dir.delete();
 			} // rm -rf
 			
-			FileOutputFormat.setOutputPath(job, new Path("/home/actif/git/3Project/Final/src/main/webapp/output"));
+			FileOutputFormat.setOutputPath(job, new Path("/home/sist/git/3Project/Final/src/main/webapp/output"));
 			job.waitForCompletion(true);
 			
 		}catch(Exception ex){System.out.println(ex.getMessage());}

@@ -1,11 +1,13 @@
 package com.sist.movie;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.util.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.hadoop.mapred.analysejobhistory_jsp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +17,12 @@ import com.sist.bestorworst.BestOrWorstDriver;
 import com.sist.data.*;
 import com.sist.mapred.*;
 import com.sist.mapredEmotion.EmotionDriver;
+import com.sist.mapredWhen.WhenDriver;
+import com.sist.mapredWhen.WhenVO;
 import com.sist.mapredWho.WhoDriver;
 import com.sist.r.*;
 import com.sist.mongo.*;
+import com.sist.naver.Naver;
 import com.sist.naver.NaverManager;
 import com.sist.search.*;
 @Controller
@@ -33,6 +38,12 @@ public class MovieController {
 	private WhoDriver 		wd;
 	@Autowired
 	private MovieRManager	mr;
+	
+	@Autowired
+	private WhenDriver		whend;
+	
+	@Autowired
+	private Naver				naverparse;
 	
 	@Autowired
 	private NaverManager		naver;
@@ -79,9 +90,9 @@ public class MovieController {
 	@RequestMapping("main/detail.do")
 	public String movie_detail(int no,Model model) throws Exception{
 		
-		File file = new File("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
+		File file = new File("/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
 		if(file.exists()) file.delete();
-		file = new File("/home/actif/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000");
+		file = new File("/home/sist/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000");
 		if(file.exists()) file.delete();
 				
 		MovieNavDTO vo = mgr.movieDetail(no); 	/* 1.영화상세정보 */
@@ -95,6 +106,7 @@ public class MovieController {
 		ed.jobCall();
 		wd.jobCall();
 		bwd.jobCall();
+		
 	   String[] movieFeel=new String[6];
 	   movieFeel=mr.feel();		//  감정 6
 	   int[] feelCount=new int[6];
@@ -228,11 +240,12 @@ public class MovieController {
 	
 	
 	@RequestMapping("main/recommand.do")											/* 추천페이지 _ 84개 데이터 */
-	public String movie_recommand(Model model){
+	public String movie_recommand(String feel,Model model){
 
 		List<String> flist = dao.recommandFeelData();			//1. 84개의 몽고디비의 중복없는 감정 값 들고오기
 		List<MovieNavDTO> movielist = mgr.navermovielist();	//2. 84개의 영화 데이터 목록 
-		String feel="재미";
+		
+		if(feel==null) 	feel="재미";
 			
 		model.addAttribute("movielist",movielist);
 		model.addAttribute("feel",feel);
@@ -270,24 +283,55 @@ public class MovieController {
 	
 	
 	@RequestMapping("main/time.do")
-	public String movie_time(String showtime,Model model){
+	public String movie_time(String showtime,Model model) throws Exception{
 		
+		/*List<WhenVO> volist = new ArrayList<WhenVO>();
 		String query = "";
 		
-		List<MovieNavDTO> list = mgr.navermovielist();
+		List<MovieNavDTO> movielist = mgr.navermovielist();
 		
+		for(int i=0; i<3; i++){ // movielist 만큼 돌려준다. 일단은 top3 실험...
+			//WhenDriver whend = new WhenDriver();
+			query = movielist.get(i).getTitle();
+			System.out.println(query);
 		
-		for(MovieNavDTO d:list){
+			List<String> list = naverparse.naver(query);
 			
-			query = showtime+" "+d.getTitle();
-			int count = naver.totalCount(query);
-			//System.out.println(query+" >> "+count);
+			File file=new File("/home/sist/git/3Project/Final/src/main/webapp/text/movieTime.txt");
+			if(file.exists())
+				file.delete();
+			FileWriter fw =new FileWriter(file);
+			
+			for(String text:list){
+				fw.write(text);
+			}
+			fw.close();
+			
+			
+			whend.jobCall();
+			
+			WhenVO vo = mr.whenInfo();
+			vo.setNo(i+1);
+			volist.add(vo);
+		}
+		System.out.println(volist.size());*/
+		List<String> flist = dao.recommandFeelData();				//감정 리스트	
+		List<MovieVO> list = dao.recomTimeData(showtime);
+		List<MovieNavDTO> movielist = new ArrayList<MovieNavDTO>();
+		
+		int ind = 0;
+		for(MovieVO v:list){
+			movielist.add(mgr.movieDetail(v.getTitle()));
+			movielist.get(ind++).setCount(v.getCount());
+		}
+		for(MovieVO vk:list){
+			System.out.println(vk.getTitle()+" "+vk.getCount());
 		}
 		
+		model.addAttribute("movielist",movielist);
+		model.addAttribute("flist",flist);
 		
-		
-		
-		return "pages/recommand";
+		return "pages/recTime";
 	}
 	
 	
