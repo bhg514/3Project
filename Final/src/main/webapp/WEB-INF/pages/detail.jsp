@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="../assets/table.css">
+<link rel="stylesheet" type="text/css" href="table.css">
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css'>
         <link rel="stylesheet" href="../assets/css/feel.css">
@@ -71,17 +71,20 @@
         var sides  = 6;
         var canvasSize = 500;
         var padding = 50;
-        var data = [
+        var data = /* [
 					<c:forEach var="count" items="${feelCount}" end="5" begin="0">
 					'${count/top*100}',				
 						</c:forEach>
-							];
-        var feilds = [
+							]; */
+					<%=request.getAttribute("fc")%>
+        var feilds = /* [
+			
                       <c:forEach var="feel" items="${movieFeel}"  end="5"  begin="0">                   
                      '${feel}',                   
                       		
 							</c:forEach>
-							];
+							]; */
+							<%=request.getAttribute("mf")%>
         // CUSTOMISABLE
         // Variable
         var canvas = $('#graph')[0];
@@ -360,15 +363,7 @@
         // Seed data to populate donut pie chart
         function seedData() {
           return [
-			<c:forEach var="who" items="${whoKey}" end="2" begin="0">
-            {
-            	
-							
-					
-              "label": "${who}",
-              "value": '${who}'
-            },
-            </c:forEach>
+  				<%=request.getAttribute("whoText")%>
            
           ];
         }
@@ -429,7 +424,7 @@
                 return deg * (Math.PI / 180);
             }
         }
-        donutGraph('.graph', '${bestCount/(bestCount+wortCount)*100}');
+        donutGraph('.graph', '${bestValue}');
         
         </script>
 

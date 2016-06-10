@@ -11,8 +11,8 @@ public class MovieRManager {
 	public void rGraph(){
 		try{
 			RConnection rc = new RConnection();
-			rc.voidEval("data<-read.table(\"/home/actif/git/final/Final/src/main/webapp/output/part-r-00000\")");
-			rc.voidEval("png(\"/home/actif/git/final/Final/src/main/webapp/text/feel.png\",width=900,height=500)");
+			rc.voidEval("data<-read.table(\"/home/bhg/git/final/Final/src/main/webapp/output/part-r-00000\")");
+			rc.voidEval("png(\"/home/bhg/git/final/Final/src/main/webapp/text/feel.png\",width=900,height=500)");
 			rc.voidEval("par(mfrow=c(1,2))"); // 그래프 여러개 합칠때 1,2는 1줄에 두개
 			rc.voidEval("pie(data$V2,labels=data$V1,col=rainbow(10))");
 			rc.voidEval("barplot(data$V2,names.arg=data$V1,col=rainbow(10))");
@@ -28,7 +28,7 @@ public class MovieRManager {
 	      try{
 	         RConnection rc = new RConnection();
 	         
-	         rc.voidEval("data<-read.table(\"/home/actif/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000\")");
+	         rc.voidEval("data<-read.table(\"/home/bhg/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000\")");
 	         rc.voidEval("data<-data[order(data$V2,decreasing=T),c(\"V1\",\"V2\")]");
 
 	         REXP p = rc.eval("data$V1");
@@ -49,7 +49,7 @@ public class MovieRManager {
 	      try{
 	         RConnection rc = new RConnection();
 	         
-	         rc.voidEval("data<-read.table(\"/home/actif/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000\")");
+	         rc.voidEval("data<-read.table(\"/home/bhg/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000\")");
 	         rc.voidEval("data<-data[order(data$V2,decreasing=T),c(\"V1\",\"V2\")]");
 
 	         REXP p = rc.eval("data$V2");
@@ -68,7 +68,7 @@ public class MovieRManager {
 		      try{
 		         RConnection rc = new RConnection();
 		         
-		         rc.voidEval("data<-read.table(\"/home/actif/git/3Project/Final/src/main/webapp/text/output/who/part-r-00000\")");
+		         rc.voidEval("data<-read.table(\"/home/bhg/git/3Project/Final/src/main/webapp/text/output/who/part-r-00000\")");
 	
 
 		         REXP p = rc.eval("data$V1");
@@ -89,7 +89,7 @@ public class MovieRManager {
 		      try{
 		         RConnection rc = new RConnection();
 		         
-		         rc.voidEval("data<-read.table(\"/home/actif/git/3Project/Final/src/main/webapp/text/output/who/part-r-00000\")");
+		         rc.voidEval("data<-read.table(\"/home/bhg/git/3Project/Final/src/main/webapp/text/output/who/part-r-00000\")");
 		
 		         REXP p = rc.eval("data$V2");
 		         who_count = p.asIntegers();
@@ -107,7 +107,7 @@ public class MovieRManager {
 			try{
 				RConnection rc = new RConnection();
 			
-				rc.voidEval("data<-read.table(\"/home/actif/git/3Project/Final/src/main/webapp/text/output/bestorworst/part-r-00000\")");
+				rc.voidEval("data<-read.table(\"/home/bhg/git/3Project/Final/src/main/webapp/text/output/bestorworst/part-r-00000\")");
 
 				
 				REXP p = rc.eval("data$V1");
@@ -128,7 +128,7 @@ public class MovieRManager {
 				try{
 				RConnection rc = new RConnection();
 				
-				rc.voidEval("data<-read.table(\"/home/actif/git/3Project/Final/src/main/webapp/text/output/bestorworst/part-r-00000\")");
+				rc.voidEval("data<-read.table(\"/home/bhg/git/3Project/Final/src/main/webapp/text/output/bestorworst/part-r-00000\")");
 				
 				REXP p = rc.eval("data$V2");
 				who_count = p.asIntegers();

@@ -1,5 +1,7 @@
 package com.sist.naver;
 
+import java.io.FileWriter;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -27,7 +29,7 @@ public class NaverManager {
 			arg = arg.replaceAll(",", "");
 			System.out.println(arg);
 			num = Integer.parseInt(arg);
-			
+		
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}

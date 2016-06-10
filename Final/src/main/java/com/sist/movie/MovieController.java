@@ -78,18 +78,19 @@ public class MovieController {
 	@RequestMapping("main/detail.do")
 	public String movie_detail(int no,Model model) throws Exception{
 		
-		File file = new File("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
+		File file = new File("/home/bhg/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
 		if(file.exists()) file.delete();
-/*		file = new File("/home/actif/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000");
-		if(file.exists()) file.delete();*/
+		file = new File("/home/bhg/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000");
+		if(file.exists()) file.delete();
 				
 		MovieNavDTO vo = mgr.movieDetail(no); 	/* 1.영화상세정보 */
 		
-		for(int i=1;i<=3;i++){				/* 2.댓글수집 60개 */
+		for(int i=1;i<=3;i++){				 //2.댓글수집 60개 
 			String json = mgr.review_data(vo.getTitle(), i);
 			mgr.jsonParse(json);
 		}
 												/* 3.하둡 */
+		//naver.totalCount(vo.getTitle());
 		ed.jobCall();
 		wd.jobCall();
 		bwd.jobCall();
@@ -102,7 +103,43 @@ public class MovieController {
 	   int[] whoCount=new int[6];
 	   movieWho=mr.who();
 	   whoCount=mr.who_count();
-
+	   
+	   for(int i=0; i<feelCount.length; i++){
+			if(feelCount[i]>=3){
+				MovieVO mv = new MovieVO();
+				mv.setTitle(vo.getTitle());
+				mv.setFeel(movieFeel[i]);
+				mv.setCount(feelCount[i]);
+				dao.recommandInsert(mv);
+			}
+		}
+		int top=feelCount[0];
+		int j=0;
+		String mf="[";
+		for(String s:movieFeel)
+		{
+			if(j>5)
+				break;
+			mf+="'"+s+"',";
+			j++;
+		}
+		mf=mf.substring(0,mf.lastIndexOf(","));
+		mf+="];";
+	   
+		
+		String fc="[";
+		j=0;
+		for(int s:feelCount)
+		{
+			if(j>5)
+				break;
+			fc+="'"+((s*100)/top)+"',";  
+			j++;
+		}
+		fc=fc.substring(0,fc.lastIndexOf(","));
+		fc+="];";
+	   /////////////////////////////////////////////////////////////////////////////감정
+	   
 	   String[] movieBoW=new String[6];
 	   int[] BoWCount=new int[6];
 	   movieBoW=mr.bestorworst();
@@ -121,7 +158,7 @@ public class MovieController {
 
 		   //"귀찮","현기증","포기","어려움","아쉬움","열받아","짜증","아쉬운","고생",
 	   
-	   String[] whoKey={"애인","가족","친구","","",""};
+	   String[] whoKey={"애인","가족","친구"};
 	   int[] who4Count={0,0,0};
 	   for(int i=0;i<whoCount.length;i++){
 		    if(movieWho[i].equals("여자친구")||movieWho[i].equals("남자친구")||movieWho[i].equals("남친")||movieWho[i].equals("여친")||movieWho[i].equals("오빠")||movieWho[i].equals("애인")||movieWho[i].equals("자기")){
@@ -133,32 +170,33 @@ public class MovieController {
 		    }
 		   
 	   }
-	   for(int i=0; i<3;i++){
-		   int wait=who4Count[i];
-		   whoKey[i+2]=Integer.toString(wait);
-	   }
-		   
+	 
+		String whoText="";
+		for(int i=0;i<3;i++)
+		{
+	
+			whoText+="{\"label\":'"+whoKey[i]+"',"+" \"value\":'"+who4Count[i]+"'},";
+			
+		}
+		whoText=whoText.substring(0,whoText.lastIndexOf(","));
+
+		int bestValue=(bestCount/(bestCount+wortCount))*100;
+	
 	   
 	   //"친구","애인","썸녀","썸남","가족","오빠","자기","여친","남친","엄마","아빠","여자친구","남자친구"
 		//필요한 데이터를 MongoDB에 3개이상 저장(추천)
-		for(int i=0; i<feelCount.length; i++){
-			if(feelCount[i]>=3){
-				MovieVO mv = new MovieVO();
-				mv.setTitle(vo.getTitle());
-				mv.setFeel(movieFeel[i]);
-				mv.setCount(feelCount[i]);
-				dao.recommandInsert(mv);
-			}
-		}
-		int top=feelCount[0];
+		
 
 		model.addAttribute("vo",vo);
-		model.addAttribute("top",top);
-		model.addAttribute("whoKey",whoKey);
-	//	model.addAttribute("who4Count",who4Count);
-		model.addAttribute("bestCount",bestCount);
-		model.addAttribute("wortCount",wortCount);
-		model.addAttribute("movieFeel",movieFeel);
+
+		model.addAttribute("whoText",whoText);
+		
+		model.addAttribute("bestValue",bestValue);
+
+
+		//model.addAttribute("movieFeel",movieFeel);
+		model.addAttribute("fc",fc);
+		model.addAttribute("mf",mf);
 		model.addAttribute("feelCount",feelCount);
 		model.addAttribute("movieWho",movieWho);
 		model.addAttribute("whoCount",whoCount);
