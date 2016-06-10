@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="../assets/table.css">
-<link rel="stylesheet" type="text/css" href="../table_detail.css">
+
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css'>
         <link rel="stylesheet" href="../assets/css/feel.css">
@@ -19,7 +19,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js'></script>
 
-
+<link rel="stylesheet" type="text/css" href="../table_detail.css">
 
 
 
@@ -31,15 +31,7 @@
 <center>
 <h2 style="margin-top:130px;">${vo.title } 상세보기</h2>
 <p>&nbsp;</p>
-<table id="table_content_top" class="table_bottom"
-		style="width:1000px;">
-	<tr height="50px">
-		<td align=right>
-			<a href="list.do">목록</a>&nbsp;
-			<a href="recommand.do">추천</a>
-		</td>
-	</tr>
-</table>
+<br><br>
 <table id="table_content" class="table_bottom" style="width:1000px">
 	<tr>
 		<td width=40% class="tdcenter" rowspan="6">

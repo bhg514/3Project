@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<!-- <link rel="stylesheet" type="text/css" href="../assets/table.css">
-<link rel="stylesheet" type="text/css" href="../table_detail.css"> -->
+<link rel="stylesheet" type="text/css" href="../assets/table.css">
+<link rel="stylesheet" type="text/css" href="../table_detail.css">
 <link rel='stylesheet prefetch'
 	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
 <link rel='stylesheet prefetch'
@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="../assets/css/feel.css">
 <link rel="stylesheet" href="../assets/css/who.css">
 <link rel="stylesheet" href="../assets/css/good.css">
+
 <script
 	src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script
@@ -23,7 +24,6 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
 <script
 	src='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js'></script>
-
 
 <!-- graph -->
 <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
@@ -81,7 +81,6 @@ var chart = AmCharts.makeChart( "chartdiv", {
 </head>
 
 <body>
-	<center>
 		<br> <br> <br> <br> <br> <br> <br>
 		<br> <br> <br>
 		<div class="col-md-12">
@@ -122,35 +121,46 @@ var chart = AmCharts.makeChart( "chartdiv", {
 			</div>
 		</div>
 
+		<br> <br> <br> <br> <br> <br><br><br><br><br><br><br><br><br>
 
 		<!-- 영화목록 -->
 
-		<table id="table_content" width=900 border=1 style="color: black;">
-			<c:forEach var="vo" items="${mndto }">
-				<tr>
-					<td rowspan=6><img src="${vo.poster }" width=100%></td>
-				</tr>
-				<tr>
-					<td>${vo.title }</td>
-				</tr>
-				<tr>
-					<td>${vo.genre }</td>
-				</tr>
-				<tr>
-					<td>${vo.reserve }%</td>
-				</tr>
-				<tr>
-					<td>${vo.star }점</td>
-				</tr>
-				<tr>
-					<td>상영시간 : ${vo.movietime }</td>
-				</tr>
-			</c:forEach>
+		<div class="col-md-12">
+			<div class="col-md-7">
+				<table id="table_content" width=900 border=1 style="color: black;">
+					<c:forEach var="vo" items="${mndto }">
+						<tr>
+							<td rowspan=6><img src="${vo.poster }" width=100%></td>
+						</tr>
+						<tr>
+							<td>${vo.title }</td>
+						</tr>
+						<tr>
+							<td>${vo.genre }</td>
+						</tr>
+						<tr>
+							<td>${vo.reserve }%</td>
+						</tr>
+						<tr>
+							<td>${vo.star }점</td>
+						</tr>
+						<tr>
+							<td>상영시간 : ${vo.movietime }</td>
+						</tr>
+					</c:forEach>
 
-		</table>
+				</table>
 
-
-		<!-- 그래프  -->
-		<div id="chartdiv"></div>
+			</div>
+			<!-- 그래프  -->
+			<div class="col-md-5">
+				<div id="chartdiv"></div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 </body>
 </html>

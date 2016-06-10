@@ -13,7 +13,7 @@
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css'>
         <link rel="stylesheet" href="../assets/css/feel.css">
         <link rel="stylesheet" href="../assets/css/who.css">
-                <link rel="stylesheet" href="../assets/css/good.css">
+            <link rel="stylesheet" href="../assets/css/good.css">
 		    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.8/TweenMax.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
@@ -116,9 +116,10 @@
 			</div>
 		</div>
 		
-		
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			<!-- 영화목록 -->
-		
+			<div class="col-md-12">
+			<div class="col-md-7">
 			<table id="table_content" width=900 border=1 style="color: black;">
 				<c:forEach var="vo" items="${movielist }" begin="0" end="2">
 					<tr>
@@ -142,11 +143,12 @@
 				</c:forEach>
 	
 			</table>
-			
+			</div>
 			
 		<!-- 그래프  -->
+		<div class="col-md-5">
 		<div id="chartdiv"></div>
-																				
-		
+		</div>																		
+		</div>
 </body>
 </html>
