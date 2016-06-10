@@ -38,8 +38,8 @@ public class MovieManager {
 		
 		MovieManager m = new MovieManager();
 		//m.movieAllData();
-		///home/actif/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieProject/movie_main.jsp
-		File file = new File("/home/actif/git/3Project/Final/src/main/webapp/text/desc.txt");
+		///home/bhg/javaStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MovieProject/movie_main.jsp
+		File file = new File("/home/bhg/git/3Project/Final/src/main/webapp/text/desc.txt");
 		if(file.exists()) file.delete();
 		
 		
@@ -252,7 +252,7 @@ public class MovieManager {
 		
 		StringBuffer sb = new StringBuffer();
 		try{
-			String key = "cdcb15981eecc6effefb51aa33302b28";		// daum API key
+			String key = "20fc44e9e0601a05998b82b60594437b";		// daum API key
 			URL url = new URL("https://apis.daum.net/search/blog?apikey="+key
 							+"&result=20&output=json&q="+URLEncoder.encode(title,"UTF-8")+"&pageno="+page);	
 			
@@ -316,7 +316,7 @@ public class MovieManager {
 			}
 			
 			// true는 append
-			FileWriter fw = new FileWriter("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt",true);
+			FileWriter fw = new FileWriter("/home/bhg/git/3Project/Final/src/main/webapp/text/movieDetail.txt",true);
 			fw.write(desc);
 			fw.close();
 			

@@ -56,7 +56,7 @@
 					<div class="col-md-12">
 						<div class="col-md-1 col-sm-1"></div>
 						<div class="col-md-5 col-sm-5">
-							<div class="main1" style="padding-top:50px; padding-bottom:50px;margin-bottom: 50px;">
+							<div class="main1" style="padding-top:50px; padding-bottom:50px;margin-bottom: 50px;overflow:hidden;">
 							<center>
 								<h2>실시간 예매 순위</h2>
 								<table id="table_content" width="500px">
@@ -72,7 +72,7 @@
 							</div>
 						</div>
 						<div class="col-md-5 col-sm-5">
-							<div class="main2" style="padding-top:50px; padding-bottom:50px;">
+							<div class="main2" style="padding-top:50px; padding-bottom:50px;overflow:hidden;">
 							<h2>실시간 영화 소식</h2>
 							<table id="table_content" width="400px">
 								<tr>

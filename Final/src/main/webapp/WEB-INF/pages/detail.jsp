@@ -69,7 +69,7 @@
 	<tr style="background:#9C9DA4;border-radius:50px;margin-bottom:70px;">
 		<td colspan="2" >
 			<h3 align=center style="">
-				영화  <b>'${vo.title }'</b>  통계 자료
+				영화  <b>'${vo.title }'</b>  통계 자료 
 			</h3>
 		</td>
 	</tr>
@@ -325,9 +325,7 @@
 				<!-- ---------------------------------언제 그래프------------------------------------------------------------- -->
 		<?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://www.boxy-svg.com/bx">
-  <desc>
- 언제 이 영화를 보나요 ??
-</desc>
+
   <defs>
     <radialGradient id="gradient-1" gradientUnits="userSpaceOnUse" cx="545" cy="213" r="500" gradientTransform="matrix(0.7, 0, 0, 0.4642, 0, 130)">
       <stop style="stop-color: rgb(99, 84, 84);" offset="0"/>
@@ -343,41 +341,50 @@
 
   <rect width="800" height="460" style="fill: url(#gradient-1);"/>
   <rect x="79.6" y="59.6" width="690" height="360" style="fill: url(#pattern-3); fill-opacity: 0.2; stroke: rgb(105, 105, 104);"/>
+   
+  <path d="M
+  <%=request.getAttribute("time")%>
+  " style="stroke: rgb(33, 125, 245); fill: none; stroke-width: 3;" bx:origin="0.5 0.5"/>
 
 
-  <text x="168.7" y="36.8" style="font-size: 16px; font-family: Roboto; fill: rgb(251, 251, 251); word-spacing: 0px;">  언제 이 영화를 보나요 ??</text>
-
- 
-  <path d="M 10 417.3 L 20 417.3 L 30 417.3 L 40 417.2 L 778.9 228.9" style="stroke: rgb(33, 125, 245); fill: none; stroke-width: 3;" bx:origin="0.5 0.5"/>
-
-  <text x="220" y="367" style="white-space: pre; font-size: 15px; fill: rgb(33, 125, 245); word-spacing: 0px;">
-      Star Trek
-    </text>
 
   <g class="y-axis">
-    <text y="420" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">0.00000%</text>
-    <text y="375" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">0.00020%</text>
-    <text y="330" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">0.00040%</text>
-    <text y="285" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">0.00060%</text>
-    <text y="240" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">0.00080%</text>
-    <text y="195" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">0.000100%</text>
-    <text y="150" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">0.000120%</text>
-    <text y="105" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">0.000140%</text>
-    <text y="60" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">0.000160%</text>
+    <text y="420" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 20px;">0%</text>
+   <text y="348" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 20px;">20%</text>
+    <text y="276" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 20px;">40%</text>
+    <text y="204" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 20px;">60%</text>
+    <text y="132" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 20px;">80%</text>
+   <text y="70" x="40" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 20px;">100%</text>
+
   </g>
   <g class="x-axis" transform="matrix(1, 0, 0, 1, 32, 12)">
-    <text y="430" x="50" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">조조</text>
-    <text y="430" x="185" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">오전</text>
-    <text y="430" x="371" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">오후</text>
-    <text y="430" x="556" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">야간</text>
-    <text y="430" x="742" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 12px;">심야</text>
+    <text y="430" x="50" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 25px;">조조</text>
+    <text y="430" x="185" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 25px;">오전</text>
+    <text y="430" x="371" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 25px;">오후</text>
+    <text y="430" x="556" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 25px;">야간</text>
+    <text y="430" x="735" style="text-anchor: middle; fill: rgb(103, 102, 102); font-size: 25px;">심야</text>
 
   </g>
 </svg>
 		</td>
 		<td>
-				<!-- ---------------------------------누구 그래프 --------------------------------------------------------------->
-    <div class="content">
+				<!-- ---------------------------------wordcloud --------------------------------------------------------------->
+				
+				 <div id="cloud">
+    <canvas width="500" height="400" id="myCanvas">
+        <p>Anything in here will be replaced on browsers that support the canvas element</p>
+        <ul class="weighted" style="font-size: 50%" id="weightTags">
+          <%=request.getAttribute("wordCloud")%>
+      
+        </ul>
+    </canvas>
+</div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://file1.hpage.com/001492/58/html/tagcloud.js'></script>
+<script src='../assets/js/aoxypj.js'></script>
+
+        <script src="../assets/js/wordCloud.js"></script>
+  <%--   <div class="content">
   <h1></h1>
   
   <div id="donut-chart">
@@ -449,10 +456,12 @@
 					<%=request.getAttribute("whoText")%>
           ];
         }
-        </script>
+        </script> --%>
     
     
     
+     
+     
 		</td>
 	</tr>
 	<tr>
