@@ -141,7 +141,12 @@
 	<tr>
 		<td width="50%">
 			<h3 align=center style="padding-top:230px;margin-bottom:30px;">
-				영화  <b>'${vo.title }'</b>  감정 분석
+				<b>'${vo.title }'</b>  감정 분석
+			</h3>
+		</td>
+		<td>
+			<h3 align=center style="padding-top:230px;margin-bottom:30px;">
+				시간대별 <b>'${vo.title }'</b> 관람 수
 			</h3>
 		</td>
 	</tr>
@@ -149,7 +154,7 @@
 			<!-- ---------------------------------  감정 그래프 ------------------------------------------------------------- -->
 		
 		<td><canvas id='graph'></canvas></td>
-
+		
         <script>
      // CUSTOMISABLE
         var sides  = 6;
@@ -310,18 +315,8 @@
         }
         play();
         </script>
-        <td>
-      </td>
-	</tr>
-	<tr>
 		<td>
-			<h3 align=center style="margin-top:60px;margin-bottom:30px;">
-				시간대별 영화 관람 수
-			</h3>
-		</td>
-	</tr>
-	<tr>
-		<td style="width:500;border:0.5px dotted #ccc;border-radius:20px;">
+		<div style="width:500;border:0.5px dotted #ccc;border-radius:20px;overflow:hidden;">
 				<!-- ---------------------------------언제 그래프------------------------------------------------------------- -->
 		<?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://www.boxy-svg.com/bx">
@@ -366,12 +361,21 @@
 
   </g>
 </svg>
+	</div>
+</td>
+	<tr>
+		<td colspan="2">
+			<h3 align=center style="padding-top:100px;margin-bottom:30px;">
+				<b>'${vo.title }'</b> 워드 클라우드  
+			</h3>
 		</td>
-		<td>
+	</tr>
+	<tr>
+		<td colspan="2">
 				<!-- ---------------------------------wordcloud --------------------------------------------------------------->
 				
-				 <div id="cloud">
-    <canvas width="500" height="400" id="myCanvas">
+				 <div id="cloud" style="">
+    <canvas width="800" height="400" id="myCanvas">
         <p>Anything in here will be replaced on browsers that support the canvas element</p>
         <ul class="weighted" style="font-size: 50%" id="weightTags">
           <%=request.getAttribute("wordCloud")%>
@@ -462,11 +466,6 @@
     
      
      
-		</td>
-	</tr>
-	<tr>
-		<td>
-	
 		</td>
 	</tr>
 </table>
