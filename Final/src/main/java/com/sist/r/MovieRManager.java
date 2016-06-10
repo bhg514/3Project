@@ -1,5 +1,6 @@
 package com.sist.r;
 
+import org.bson.util.StringRangeSet;
 import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,8 @@ import java.util.*;
 
 @Component
 public class MovieRManager {
+	
+	
 
 	public void rGraph(){
 		try{
@@ -58,7 +61,7 @@ public class MovieRManager {
 	         REXP p = rc.eval("data$V2");
 	         count = p.asIntegers();
 	         
-	         	System.out.println(count);
+	  
 	      }catch(Exception ex){
 	         System.out.println(ex.getMessage());
 	      }
@@ -97,7 +100,6 @@ public class MovieRManager {
 		         REXP p = rc.eval("data$V2");
 		         who_count = p.asIntegers();
 		         
-		         	System.out.println(who_count);
 		      }catch(Exception ex){
 		         System.out.println(ex.getMessage());
 		      }
@@ -136,13 +138,14 @@ public class MovieRManager {
 				REXP p = rc.eval("data$V2");
 				who_count = p.asIntegers();
 				
-				System.out.println(who_count);
+				
 				}catch(Exception ex){
 					System.out.println(ex.getMessage());
 				}
 				return who_count;
 			
 			}
+<<<<<<< HEAD
 			
 		public WhenVO whenInfo(){
 			
@@ -181,5 +184,51 @@ public class MovieRManager {
 			
 			return vo;
 		}
+=======
+			public static String[] wordcloud(){
+				String[] word=new String[20];
+				try{
+					RConnection rc=new RConnection();
+					rc.voidEval("library(KoNLP)");
+					rc.voidEval("data<-readLines(\"/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt\")");		
+					rc.voidEval("place<-sapply(data,extractNoun,USE.NAMES = F)");				
+					rc.voidEval("data<-unlist(place)");					
+					rc.voidEval("place<-str_replace_all(data,\"[^[:alpha:]]\",\"\")");					
+					rc.voidEval("place<-gsub(\" \",\"\",place)");
+					rc.voidEval("place<-Filter(function(x){nchar(x)>=2},place)");
+					rc.voidEval("rev<-table(unlist(place))");
+					rc.voidEval("top20<-head(sort(rev,decreasing = T),20)");
+					REXP p=rc.eval("names(top20)");
+					word=p.asStrings();
+					
+				}catch(Exception ex){
+					System.out.println(ex.getMessage());
+				
+				}
+				return word;
+			}
+			public static int[] wordCount(){
+				int[] count=new int[20];
+				try{
+					RConnection rc=new RConnection();
+					rc.voidEval("library(KoNLP)");
+					rc.voidEval("data<-readLines(\"/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt\")");		
+					rc.voidEval("place<-sapply(data,extractNoun,USE.NAMES = F)");				
+					rc.voidEval("data<-unlist(place)");					
+					rc.voidEval("place<-str_replace_all(data,\"[^[:alpha:]]\",\"\")");					
+					rc.voidEval("place<-gsub(\" \",\"\",place)");
+					rc.voidEval("place<-Filter(function(x){nchar(x)>=2},place)");
+					rc.voidEval("rev<-table(unlist(place))");
+					rc.voidEval("top20<-head(sort(rev,decreasing = T),20)");
+					REXP p=rc.eval("top20");
+					count=p.asIntegers();
+					
+				}catch(Exception ex){
+					System.out.println(ex.getMessage());
+				
+				}
+				return count;
+			}
+>>>>>>> refs/remotes/origin/7단비단
 				
 }

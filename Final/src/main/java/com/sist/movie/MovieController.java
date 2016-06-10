@@ -205,22 +205,29 @@ public class MovieController {
 			query = timeshow[i]+" "+vo.getTitle();   // 조조 아가씨
 			
 			times[i] = naver.totalCount(query); 
-			System.out.println(times[i]);
 			sum += times[i];
 		}
 		for(int i=0; i<times.length; i++){
 			double a = (times[i]/(double)sum)*100;
-			times[i] = (int)(Math.round(a));
+			times[i] = (400-(int)(Math.round(a)*5));
 			//System.out.println(times[i]);
 		}
-		
+		String time="80 "+times[0]+"L 230 "+times[1]+"L 400 "+times[2]+"L 590 "+times[3]+"L 770 "+times[4]+"L ";
+		///////////////////////////////////////////////////////////////////////wordCloud
+		String[] word=mr.wordcloud();
+		int[] wordCount=mr.wordCount();
+		String wordCloud="";
+		for(int i=0;i<word.length;i++){
+			wordCloud+="<li><a href=\"#\" data-weight=\""+wordCount[i]*2+"\">"+word[i]+"</a></li>";
+			
+		}
 		
 		model.addAttribute("vo",vo);
-
+		model.addAttribute("wordCloud",wordCloud);
 		model.addAttribute("whoText",whoText);
 		
 		model.addAttribute("bestValue",bestValue);
-		model.addAttribute("times",times);
+		model.addAttribute("time",time);
 
 		//model.addAttribute("movieFeel",movieFeel);
 		model.addAttribute("fc",fc);

@@ -31,7 +31,7 @@ public class Naver  {
 					
 					NodeList items = (NodeList) xpath.evaluate("//item", documentInfo, XPathConstants.NODESET );					
 					NodeList description = (NodeList) xpath.evaluate("//item/description", documentInfo, XPathConstants.NODESET );
-					/*File file=new File("/home/sist/git/3Project/Final/src/main/webapp/text/movieTime.txt");
+/*					File file=new File("/home/sist/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
 					if(file.exists())
 						file.delete();
 					FileWriter fw =new FileWriter(file);*/					

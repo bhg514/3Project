@@ -54,7 +54,7 @@ $(function(){
   <center>
     <h2>글쓰기</h2>
     <p>&nbsp;</p>
-    <form method=post action="board_insert_ok.do" id="frm">
+    <form method=post action="board_insert_ok.do" id="frm" accept-charset="UTF-8">
           <table id="table_content" class="table_bottom">
            <tr>
             <td width=15% align="right">이름</td>
