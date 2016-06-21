@@ -21,7 +21,7 @@ public class MovieDAO {
 	
 	public MovieDAO(){
 		try{	
-			mc = new MongoClient(new ServerAddress("211.238.142.77",27017));
+			mc = new MongoClient(new ServerAddress("localhost",27017));
 			db = mc.getDB("mydb");
 			dbc = db.getCollection("recommandemotion");				//추천페이지_감정데이터 가져오기
 			dbc_when = db.getCollection("when");
