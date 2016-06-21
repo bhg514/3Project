@@ -8,11 +8,13 @@
 <title>Insert title here</title>
 <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="../assets/table.css">
+
 <link rel="stylesheet" type="text/css" href="../table_detail.css">
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css'>
         <link rel="stylesheet" href="../assets/css/feel.css">
         <link rel="stylesheet" href="../assets/css/who.css">
+                <link rel="stylesheet" href="../assets/css/word.css">
                 <link rel="stylesheet" href="../assets/css/good.css">
 		    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.8/TweenMax.min.js'></script>
@@ -368,126 +370,66 @@
 </svg>
 		</td>
 		<td>
-				<!-- ---------------------------------wordcloud --------------------------------------------------------------->
-				
-				 <div id="cloud">
-    <canvas width="500" height="400" id="myCanvas">
-        <p>Anything in here will be replaced on browsers that support the canvas element</p>
-        <ul class="weighted" style="font-size: 50%" id="weightTags">
-        <li><a href="#" data-weight="10">곡성</a></li>
-        <li><a href="#" data-weight="20">영화</a></li>
-        <li><a href="#" data-weight="40">哭聲</a></li>
-        <li><a href="#" data-weight="52">감독</a></li>
-        <li><a href="#" data-weight="44">나홍진</a></li>
-        <li><a href="#" data-weight="32">개봉</a></li>
-        <li><a href="#" data-weight="20">리뷰</a></li>
-        <li><a href="#" data-weight="18">내용</a></li>
-<!--         <li><a href="#" data-weight="18">스릴러</a></li>
-        <li><a href="#" data-weight="16">곽도원</a></li>
-        <li><a href="#" data-weight="16">천우희</a></li>
-        <li><a href="#" data-weight="16">쿠니</a></li>
-        <li><a href="#" data-weight="14">관람</a></li>
-        <li><a href="#" data-weight="14">신작</a></li>
-        <li><a href="#" data-weight="14">의심</a></li>
-        <li><a href="#" data-weight="14">작품</a></li>
-        <li><a href="#" data-weight="14">황정민</a></li>
-        <li><a href="#" data-weight="12">미스터리</a></li>
-        <li><a href="#" data-weight="12">사람</a></li>
-        <li><a href="#" data-weight="12">생각</a></li> -->
-        
-          <%-- <%=request.getAttribute("wordCloud")%> --%>
-      
-        </ul>
-    </canvas>
-</div>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='http://file1.hpage.com/001492/58/html/tagcloud.js'></script>
-<script src='../assets/js/aoxypj.js'></script>
+						<!-- ---------------------------------wordcloud --------------------------------------------------------------->
 
-        <script src="../assets/js/wordCloud.js"></script>
-  <%--   <div class="content">
-  <h1></h1>
-  
-  <div id="donut-chart">
-    <svg></svg>
-  </div>
-</div>
+    <div id="main1"></div>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/echarts-all-english-v2.js'></script>
+
         <script>
-     // Create the donut pie chart and insert it onto the page
-        nv.addGraph(function() {
-          var donutChart = nv.models.pieChart()
-          		.x(function(d) {
-                return d.label
-              })
-          		.y(function(d) {
-                return d.value
-              })
-          		.showLabels(true)
-          		.showLegend(false)
-          		.labelThreshold(.05)
-          		.labelType("key")
-          		.color(["#965251", "#00b3ca", "#7dd0b6", "#e38690", "#ead98b"])
-          		.tooltipContent(
-                function(key, y, e, graph) { return 'Custom tooltip string' }
-              ) // This is for when I turn on tooltips
-          		.tooltips(false)
-          		.donut(true)
-          		.donutRatio(0.35);
-          
-          	// Insert text into the center of the donut
-          	function centerText() {
-        			return function() {
-                var svg = d3.select("svg");
-            		var donut = svg.selectAll("g.nv-slice").filter(
-                  function (d, i) {
-                    return i == 0;
-                  }
-                );
-                
-                // Insert first line of text into middle of donut pie chart
-                donut.insert("text", "g")
-                    .text("Line One")
-                    .attr("class", "middle")
-                    .attr("text-anchor", "middle")
-                		.attr("dy", "-.55em")
-                		.style("fill", "#000");
-                // Insert second line of text into middle of donut pie chart
-                donut.insert("text", "g")
-                    .text("Line Two")
-                    .attr("class", "middle")
-                    .attr("text-anchor", "middle")
-                		.attr("dy", ".85em")
-                		.style("fill", "#000");
-              }
-            }
-          
-          // Put the donut pie chart together
-          d3.select("#donut-chart svg")
-            .datum(seedData())
-            .transition().duration(300)
-            .call(donutChart)
-            .call(centerText())
-            .call(pieSlice());
-            
-          return donutChart;
-        });
-        // Seed data to populate donut pie chart
-        function seedData() {
-          return [
-					<%=request.getAttribute("whoText")%>
-          ];
+
+        var myChart = echarts.init(document.getElementById('main1'));
+
+function createRandomItemStyle() {
+    return {
+        normal: {
+            color: 'rgb(' + [
+                Math.round(Math.random() * 160),
+                Math.round(Math.random() * 160),
+                Math.round(Math.random() * 160)
+            ].join(',') + ')'
         }
-        </script> --%>
+    };
+}
+
+        myChart.setOption({
+title: {
+        text: 'My Heart is Broken by Evanescence',
+        link: 'http://www.metrolyrics.com/my-heart-is-broken-lyrics-evanescence.html'
+    },
+    tooltip: {
+        show: true
+    },
+    series: [{
+        name: 'My Heart is Broken Lyrics',
+        type: 'wordCloud',
+        size: ['98%', '98%'],
+        textRotation : [0, 45, 90, -45],
+        textPadding: 0,
+        autoSize: {
+            enable: true,
+            minSize: 14
+        },
+        data: [
+<%=request.getAttribute("wordCloud")%>
+        ]
+    }]
+ });
+
+</script>
+
+    
+    
+<!--word end----------------------------------------------------------------------------------------------------------  -->
+	
     
     
     
-     
-     
 		</td>
 	</tr>
 	<tr>
-		<td>
-	
+		<td colspan="2">
+		
+
 		</td>
 	</tr>
 </table>

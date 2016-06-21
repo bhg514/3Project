@@ -8,17 +8,17 @@
   text-align: center;
 }
 
-svg {
+svg1 {
   width: 500px;
   height: 500px;
   margin: 0 auto;
 }
-svg text.middle {
+svg1 text.middle {
   font-family: Lato;
   font-weight: 300;
   font-size: 24px;
 }
-svg .nvd3.nv-pie .nv-pieLabels text {
+svg1 .nvd3.nv-pie .nv-pieLabels text {
   font-family: Lato;
   font-size: 18px;
   font-weight: 300;

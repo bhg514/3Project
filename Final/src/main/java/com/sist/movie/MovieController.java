@@ -208,8 +208,7 @@ public class MovieController {
 		int[] wordCount=mr.wordCount();
 		String wordCloud="";
 		for(int i=0;i<word.length;i++){
-			wordCloud+="<li><a href=\"#\" data-weight=\""+wordCount[i]*2+"\">"+word[i]+"</a></li>";
-			
+			wordCloud+="{name: \""+word[i]+"\",value:"+ wordCount[i]*5000+",itemStyle: createRandomItemStyle()},";
 		}
 		
 		model.addAttribute("vo",vo);
