@@ -47,7 +47,7 @@ public class EmotionDriver {
 			   FileSystem fs1=FileSystem.get(conf);
 			   // hadoop fs -cat /
 			   fs1.copyFromLocalFile(
-					   new Path("/home/bhg/git/3Project/Final/src/main/webapp/text/movieDetail.txt"), //영화상세정보
+					   new Path("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt"), //영화상세정보
 					   new Path("/input/emotion/emotion.txt"));	
 			   fs1.close();
 			   
@@ -62,7 +62,7 @@ public class EmotionDriver {
 			   FileSystem fs=FileSystem.get(conf);
 			   fs.copyToLocalFile(
 					   new Path("/output/emotion/part-r-00000"),
-					   new Path("/home/bhg/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000")); //영화감정분석
+					   new Path("/home/actif/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000")); //영화감정분석
 			   fs.close();			   
 				
 		   }catch(Exception ex)
