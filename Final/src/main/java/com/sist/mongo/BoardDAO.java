@@ -23,7 +23,7 @@ public class BoardDAO {
     		System.out.println(ex.getMessage());
     	}
     }
-    // ��� : �������� ���   => ����  (sort,skip,limit)
+    
     public List<BoardVO> boardAllData(int page)
     {
     	List<BoardVO> list=new ArrayList<BoardVO>();
