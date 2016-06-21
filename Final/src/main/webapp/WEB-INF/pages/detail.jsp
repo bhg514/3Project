@@ -374,7 +374,28 @@
     <canvas width="500" height="400" id="myCanvas">
         <p>Anything in here will be replaced on browsers that support the canvas element</p>
         <ul class="weighted" style="font-size: 50%" id="weightTags">
-          <%=request.getAttribute("wordCloud")%>
+        <li><a href="#" data-weight="10">곡성</a></li>
+        <li><a href="#" data-weight="20">영화</a></li>
+        <li><a href="#" data-weight="40">哭聲</a></li>
+        <li><a href="#" data-weight="52">감독</a></li>
+        <li><a href="#" data-weight="44">나홍진</a></li>
+        <li><a href="#" data-weight="32">개봉</a></li>
+        <li><a href="#" data-weight="20">리뷰</a></li>
+        <li><a href="#" data-weight="18">내용</a></li>
+<!--         <li><a href="#" data-weight="18">스릴러</a></li>
+        <li><a href="#" data-weight="16">곽도원</a></li>
+        <li><a href="#" data-weight="16">천우희</a></li>
+        <li><a href="#" data-weight="16">쿠니</a></li>
+        <li><a href="#" data-weight="14">관람</a></li>
+        <li><a href="#" data-weight="14">신작</a></li>
+        <li><a href="#" data-weight="14">의심</a></li>
+        <li><a href="#" data-weight="14">작품</a></li>
+        <li><a href="#" data-weight="14">황정민</a></li>
+        <li><a href="#" data-weight="12">미스터리</a></li>
+        <li><a href="#" data-weight="12">사람</a></li>
+        <li><a href="#" data-weight="12">생각</a></li> -->
+        
+          <%-- <%=request.getAttribute("wordCloud")%> --%>
       
         </ul>
     </canvas>

@@ -79,9 +79,9 @@ public class MovieController {
 	@RequestMapping("main/detail.do")
 	public String movie_detail(int no,Model model) throws Exception{
 		
-		File file = new File("/home/actif/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
+		File file = new File("/home/bhg/git/3Project/Final/src/main/webapp/text/movieDetail.txt");
 		if(file.exists()) file.delete();
-		file = new File("/home/actif/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000");
+		file = new File("/home/bhg/git/3Project/Final/src/main/webapp/text/output/emotion/part-r-00000");
 		if(file.exists()) file.delete();
 				
 		MovieNavDTO vo = mgr.movieDetail(no); 	/* 1.영화상세정보 */
@@ -150,7 +150,7 @@ public class MovieController {
 	   for(int i=0;i<BoWCount.length;i++){
 		   if(movieBoW[i].equals("힘든")||movieBoW[i].equals("힘듦")||movieBoW[i].equals("힘듬")||movieBoW[i].equals("힘든")||movieBoW[i].equals("싫다")||movieBoW[i].equals("싫어")||
 				   movieBoW[i].equals("귀찮")||movieBoW[i].equals("현기증")||movieBoW[i].equals("괜히")||movieBoW[i].equals("포기")||movieBoW[i].equals("어려움")||movieBoW[i].equals("노잼")||movieBoW[i].equals("재미없음")||
-				   movieBoW[i].equals("열받아")||movieBoW[i].equals("짜증")||movieBoW[i].equals("아쉬운")||movieBoW[i].equals("고생")||movieBoW[i].equals("후회")||movieBoW[i].equals("아깝")||movieBoW[i].equals("비추")){
+				   movieBoW[i].equals("열받아")||movieBoW[i].equals("짜증")||movieBoW[i].equals("아쉬움")||movieBoW[i].equals("고생")||movieBoW[i].equals("후회")||movieBoW[i].equals("아깝")||movieBoW[i].equals("비추")){
 			   wortCount+=BoWCount[i];
 		   }else {
 			   bestCount+=BoWCount[i];
@@ -180,8 +180,10 @@ public class MovieController {
 			
 		}
 		whoText=whoText.substring(0,whoText.lastIndexOf(","));
-
-		int bestValue=(bestCount/(bestCount+wortCount))*100;
+		System.out.println("bestCount:"+bestCount);
+		System.out.println("wortCount:"+wortCount);
+		int bestValue=(bestCount*100/(bestCount+wortCount));
+		
 
 		
 		// 조조 야간 오전 오후 심야
